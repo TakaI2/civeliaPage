@@ -14,8 +14,8 @@
   <a-scene embedded arjs="debugUIEnabled:false;trackingMethod:best;" vr-mode-ui"enabled: false">
 	<!-- オブジェクトファイルとマテリアルファイルを読み込む -->
 	<a-assets>
-		<a-asset-item id="table-obj" src="model_obj/table/table.obj"></a-asset-item>
-		<a-asset-item id="table-mtl" src="model_obj/table/table.mtl"></a-asset-item>
+		<a-asset-item id="hug-obj" src="model_obj/hug_obj/caro_body1_material_shapekey_VRC_resize_texture.obj"></a-asset-item>
+		<a-asset-item id="hug-mtl" src="model_obj/hug_obj/caro_body1_material_shapekey_VRC_resize_texture.mtl"></a-asset-item>
 	</a-assets>
 
 	<!--こっからARの世界。　マーカ上に何を展開するかを書く -->
@@ -23,7 +23,7 @@
     <!-- マーカーを登録（プリセットされている「hiro」マーカー） -->
     <a-marker preset="hiro">
       <!-- マーカーの場所にモデルを置く（見やすいようにワイヤーフレーム表示） -->
-	  <a-obj-model id="table" src="#table-obj" mtl="#table-mtl" position="0 0 0" scale="0.5 0.5 0.5" rotation="0 0 0"></a-obj-model>
+	  <a-obj-model id="hug" src="#hug-obj" mtl="#hug-mtl" position="0 0 0" scale="0.5 0.5 0.5" rotation="0 0 0"></a-obj-model>
 	  <a-text value="Hello world" position= "0 1.3 0" align="center"></a-text>
     </a-marker>
  
