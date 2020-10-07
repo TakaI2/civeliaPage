@@ -1,30 +1,32 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 
 <head>
-  <!-- A-Frame ‚ð“Ç‚Ýž‚Þ -->
-  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-  <!-- AR.js ‚ð“Ç‚Ýž‚Þ -->
-  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+<meta charset="UTF-8" />
+  <!-- three.jsã‚’èª­ã¿è¾¼ã‚€ -->
+  <!-- A-Frame ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®èª­ã¿è¾¼ã¿ -->
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <!-- AR.js ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®èª­ã¿è¾¼ã¿ -->
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
-  <!-- ƒV[ƒ“‚ð’Ç‰Á -->
+  <!-- ã‚·ãƒ¼ãƒ³ã‚’è¿½åŠ  -->
   <a-scene embedded arjs="debugUIEnabled:false;">
 
-    <!-- 3DCGƒ‚ƒfƒ‹‚Ì“Ç‚Ýž‚Ý -->
+    <!-- 3DCGãƒ¢ãƒ‡ãƒ«ã®èª­ã¿è¾¼ã¿ -->
     <a-assets>
       <a-asset-item id="vroid" src="model_obj/teseusu_glb/Vita.glb"></a-asset-item>
     </a-assets>
 
-    <!-- Ž©ìƒ}[ƒJ[‚ð’Ç‰Á  -->
+    <!-- è‡ªä½œãƒžãƒ¼ã‚«ãƒ¼ã‚’è¿½åŠ   -->
     <a-marker preset="hiro">
 
-      <!-- 3DCGƒ‚ƒfƒ‹‚ÌŒÄ‚Ño‚µ -->
+      <!-- 3DCGãƒ¢ãƒ‡ãƒ«ã®å‘¼ã³å‡ºã— -->
       <a-gltf-model src="#vroid"></a-gltf-model>
 
     </a-marker>
 
-    <!-- ƒJƒƒ‰‚ð’Ç‰Á -->
+    <!-- ã‚«ãƒ¡ãƒ©ã‚’è¿½åŠ  -->
     <a-entity camera></a-entity>
   </a-scene>
 </body>
