@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8" />
+  <!-- three.jsを読み込む -->
+  <!-- A-Frame ライブラリの読み込み -->
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <!-- AR.js ライブラリの読み込み -->
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+</head>
+
+<body style='margin: 0; overflow: hidden;'>
+  <!-- シーンを追加 -->
+  <a-scene embedded arjs="debugUIEnabled:false;">
+
+    <!-- 3DCGモデルの読み込み -->
+    <a-assets>
+      <img id="tile" src="model_obj/teseusu_png/teseusu_2000_3.png">
+    </a-assets>
+
+    <!-- 自作マーカーを追加  -->
+    <a-marker preset="hiro">
+
+      <!-- 3DCGモデルの呼び出し -->
+      <a-image src="#title" totation="90 0 0" scale="50 50 50" position="0 0 0"></a-image>
+
+    </a-marker>
+
+    <!-- カメラを追加 -->
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
+</html>
