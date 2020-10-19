@@ -13,16 +13,17 @@
   <!-- シーンを追加 -->
   <a-scene embedded arjs="debugUIEnabled:false;">
 
-    <!-- 3DCGモデルの読み込み -->
+    <!-- 3DCGモデルの読み込み あとでVitaにもどしとくこと -->
     <a-assets>
-      <img id="tile" src="model_obj/teseusu_png/teseusu_2000_3.png">
+      <a-asset-item id="vroid" src="model_obj/teseusu_glb/teseusu_glt2.glb"></a-asset-item>
     </a-assets>
 
     <!-- 自作マーカーを追加  -->
     <a-marker preset="hiro">
+	<!-- a-marker type="pattern" url="pattern-act.patt" -->
 
       <!-- 3DCGモデルの呼び出し -->
-      <a-image src="#title" totation="90 0 0" scale="1 1 1" position="0 0 0"></a-image>
+      <a-gltf-model animation="property: rotation; from: 0 0 0; to: 0 -360 0; dur: 10000; easing: linear; loop: true" src="#vroid"></a-gltf-model>
 
     </a-marker>
 
