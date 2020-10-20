@@ -2,16 +2,28 @@
 
 <head>
 <meta charset="UTF-8" />
-  <!-- three.jsを読み込む -->
+
   <!-- A-Frame ライブラリの読み込み -->
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+
   <!-- AR.js ライブラリの読み込み -->
-  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
 </head>
 
+<style></style>
+
 <body style='margin: 0; overflow: hidden;'>
+
+  <div class="arjs-loader">
+	<div>Loading, please wait...</div>
+  </div>
+
   <!-- シーンを追加 -->
-  <a-scene embedded arjs="debugUIEnabled:false;">
+  <!-- <a-scene embedded arjs="debugUIEnabled:false;"> -->
+  <a-scene vr-mode-ui="enabled: false;"renderer="logarithmicDepthBuffer: true;" 
+  embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+
 
     <!-- 3DCGモデルの読み込み あとでVitaにもどしとくこと -->
     <a-assets>
