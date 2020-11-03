@@ -14,6 +14,30 @@ scene.visible = false;
 const camera = new THREE.Camera();
 scene.add(camera);
 
+const arToolkitSource = new THREEx.ArToolkitSource({
+    sourceType: 'webcam'
+});
+
+arToolkitSource.init(() => {
+    setTimeout(() => {
+        onresize();
+    }, 2000);
+});
+
+addEventListener('resize', () => {
+    onresize();
+})
+
+function onResize(){
+    arToolkitSource.onResizeElement();
+    arToolkitSource.copyElementSizeTo(renderer.domElement);
+    if(arToolkitContext.arController !== null){
+        arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas);
+    }
+};
+
+
+
 const arToolkitSource = new THREEx.ArToolkitContext({
     cameraParametersUrl: 'data/camera_para.dat',
     detectionMode: 'mono'
