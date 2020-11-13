@@ -46,7 +46,7 @@
 
 	<a-assets>
 		<img id="ground" src="ground.jpg">
-		<video id = "kentucky-derby" src="pad.mp4"></video>
+		<video id = "kentucky-derby" autoplay loop="true" preload="auto" src="pad.mp4"></video>
 	</a-assets>
 
 
@@ -83,7 +83,8 @@
 		<!--Textured plane parallel to ground
 		<a-plane src="#ground" height="100" width = "100" rotation="-90 0 0"></a-plane>
 		-->
-		<a-entity geometry="primitive: plane" material="src: #kentucky-derby"></a-entity>
+		<!-- Using the asset management system. -->
+		<a-video src="#kentucky-derby" width="16" height="9" position="0 0 -20"></a-video>
 
 	</a-entity>
 
