@@ -72,7 +72,7 @@
   -->
 
   <!-- Using the asset management system. -->
-  <a-video src="#kentucky-derby" width="160" height="90" position="0 0 0" rotation="90 0 0" play="true"></a-video>
+  <a-video src="#kentucky-derby" width="160" height="90" position="0 0 0" rotation="90 180 0" play="true"></a-video>
 	
 	<a-entity scale="5 5 5"
 			  position= "180 1 10"
@@ -96,6 +96,13 @@
   <!-- カメラを追加 -->
   <a-entity camera></a-entity>
   </a-scene>
+
+  <script>
+	  var video = document.querySelector('#kentucky-derby');
+	  video.play();
+  </script>
+
+
 </body>
 
 
