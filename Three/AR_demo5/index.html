@@ -44,6 +44,16 @@
   <a-scene vr-mode-ui="enabled: false;"renderer="logarithmicDepthBuffer: true;" 
   embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
+	<a-assets>
+		<img id="ground" src="ground.jpg">
+	</a-assets>
+
+	<!--Basic Plane. -->
+	<a-plane color="#CCC" height="20" width="20"></a-plane>
+
+	<!--Textured plane parallel to ground-->
+	<a-plane src="#ground" height="100" width = "100" rotation="-90 0 0"></a-plane>
+
   <a-nft
       type="nft"
       url="https://fervent-easley-0190fe.netlify.app/three/ar_demo4/mark/act"
@@ -53,6 +63,7 @@
       smoothThreshold="5"
   >
 
+  <!-- 回転アニメーション
 	<a-entity
 	  gltf-model="model_obj/teseusu_glb/teseusu_glt2.glb"
 	  scale="170 170 170"
@@ -61,19 +72,13 @@
 
 
 	  >
-
-	  <style>
-    	* { padding: 0; margin: 0; }
-    	canvas { background: #eee; display: block; margin: 0 auto; }
-	  </style>
-	  
-	  <canvas id="myCanvas" width="480" height="320"></canvas>
-
 	</a-entity>
+  -->
 
 
 
   </a-nft>
+
 
   <!-- カメラを追加 -->
   <a-entity camera></a-entity>
