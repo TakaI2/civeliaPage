@@ -46,6 +46,10 @@
 
 	<a-assets>
 		<img id="ground" src="ground.jpg">
+		<img id="up" src="up.png">
+		<img id="left" src="left.png">
+		<img id="right" src="right.png">
+		<img id="left" src="left.png">
 		<video id = "kentucky-derby" autoplay loop="true" preload="auto" src="pad.mp4"></video>
 	</a-assets>
 
@@ -74,19 +78,88 @@
   <!-- Using the asset management system. -->
   <a-video src="#kentucky-derby" width="160" height="90" position="30 0 -30" rotation="90 180 0" play="true"></a-video>
 	
+  	<!-- 上に動く絵 -->
 	<a-entity scale="5 5 5"
 			  position= "180 1 10"
 			  
-	 >
+			  animation="property: object3D.position.y;
+			  to: 2.0;
+			  dir: alternate;
+			  dur: 1000;
+			  loop: true"
+			  
+	>
 
 		<!--Basic Plane. 
 		<a-plane color="#CCC" height="20" width="20"></a-plane>
 		-->
-		<!--Textured plane parallel to ground
-		<a-plane src="#ground" height="100" width = "100" rotation="-90 0 0"></a-plane>
+		
+		<!--Textured plane parallel to ground -->
+		<a-plane src="#up" height="100" width = "100" rotation="-90 0 0"></a-plane>
+		
+	</a-entity>
+
+	<!-- 下に動く絵 -->
+	<a-entity scale="5 5 5"
+			  position= "180 1 10"
+			  
+			  animation="property: object3D.position.y;
+			  to: -2.0;
+			  dir: alternate;
+			  dur: 1000;
+			  loop: true"
+			  
+	>
+
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
 		-->
 		
+		<!--Textured plane parallel to ground -->
+		<a-plane src="#down" height="100" width = "100" rotation="-90 0 0"></a-plane>
 		
+	</a-entity>
+
+	<!--左に動く絵-->
+	<a-entity scale="5 5 5"
+	position= "180 1 10"
+	
+	animation="property: object3D.position.x;
+	to: 2.0;
+	dir: alternate;
+	dur: 1000;
+	loop: true"
+	
+	>
+
+	<!--Basic Plane. 
+	<a-plane color="#CCC" height="20" width="20"></a-plane>
+	-->
+
+	<!--Textured plane parallel to ground -->
+	<a-plane src="#left" height="100" width = "100" rotation="-90 0 0"></a-plane>
+
+	</a-entity>
+
+
+	<!--右に動く絵-->
+	<a-entity scale="5 5 5"
+	position= "180 1 10"
+	
+	animation="property: object3D.position.x;
+	to: -2.0;
+	dir: alternate;
+	dur: 1000;
+	loop: true"
+	
+	>
+
+	<!--Basic Plane. 
+	<a-plane color="#CCC" height="20" width="20"></a-plane>
+	-->
+
+	<!--Textured plane parallel to ground -->
+	<a-plane src="#right" height="100" width = "100" rotation="-90 0 0"></a-plane>
 
 	</a-entity>
 
