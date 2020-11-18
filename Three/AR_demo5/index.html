@@ -78,15 +78,9 @@
   <!-- Using the asset management system. -->
   <a-video src="#kentucky-derby" width="160" height="90" position="30 0 -30" rotation="90 180 0" play="true"></a-video>
 	
-  	<!-- 右に動く絵 -->
+  	<!-- 上側に表示する絵 -->
 	<a-entity scale="1 1 1"
-			  position= "10 4 10"
-			  
-			  animation="property: object3D.position.x;
-			  			to: 100.0;
-			  			dir: alternate;
-			  			dur: 1000;
-			  			loop: 1">
+			  position= "10 1 -100">
 			  
 
 		<!--Basic Plane. 
@@ -98,15 +92,9 @@
 		
 	</a-entity>
 
-	<!-- 左に動く絵 -->
-	<a-entity scale="1 0.7 1"
-		  	  position= "10 4 10"
-		  
-			     animation="property: object3D.position.x;
-							to: -100.0;
-							dir: alternate;
-							dur: 1000;
-							loop: 1">
+	<!-- 下側に表示する絵 -->
+	<a-entity scale="1 1 1"
+		  	  position= "10 1 100">
 		  
 
 	<!--Basic Plane. 
@@ -116,9 +104,37 @@
 	<!--Textured plane parallel to ground -->
 	<a-plane src="#down" height="100" width = "100" rotation="-90 0 0"></a-plane>
 	
-</a-entity>
+	</a-entity>
 
 	
+	<!-- 右側に表示する絵 -->
+	<a-entity scale="1 1 1"
+			  position= "100 1 10">
+			  
+
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
+		-->
+		
+		<!--Textured plane parallel to ground -->
+		<a-plane src="#right" height="100" width = "100" rotation="-90 0 0"></a-plane>
+		
+	</a-entity>
+
+	<!-- 左側に表示する絵 -->
+	<a-entity scale="1 1 1"
+			  position= "-100 4 10">
+			  
+
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
+		-->
+		
+		<!--Textured plane parallel to ground -->
+		<a-plane src="#left" height="100" width = "100" rotation="-90 0 0"></a-plane>
+		
+	</a-entity>
+
 
   </a-nft>
 
