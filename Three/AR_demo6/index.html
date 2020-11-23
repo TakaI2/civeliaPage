@@ -54,8 +54,11 @@
   embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
 	<a-assets>
-		<img id="world2" src="world2.png">
-		<img id="world" src="world.png">
+		<img id="floor1" src="floor1.png">
+		<img id="floor2" src="floor2.png">
+		<img id="floor3" src="floor3.png">
+		<img id="floor4" src="floor4.png">
+		<img id="floor5" src="floor5.png">
 
 	</a-assets>
 
@@ -82,53 +85,114 @@
   -->
 
 
-	<!-- 上側に表示する絵 -->
-	<a-entity scale="7 7 7"
-			position= "100 1.5 -200"
+	<!-- 1層目に表示する絵 -->
+	<a-entity scale="2 2 2"
+			position= "100 0.5 -200"
 			
 			animation="property: rotation;
 			from: 0 0 0;
 			to: 0 -360 0;
-			dur: 4000;
+			dur: 10000;
 			loop: true;
 			easing: linear">
 	
 
-	<!--Basic Plane. 
-	<a-plane color="#CCC" height="20" width="20"></a-plane>
-	-->
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
+		-->
 
-	<!--Textured plane parallel to ground -->
-	<a-image src="#world2" width="100" height="100" position="0 1.6 -1" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
-	
+		<!--Textured plane parallel to ground -->
+		<a-image src="#floor1" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+		
 	</a-entity>
 
 	
-  	<!-- 下側に表示する絵 -->
-	<a-entity scale="7 7 7"
-			  position= "100 0.5 -200"
+  	<!-- 2層目に表示する絵 -->
+	<a-entity scale="3 3 3"
+			  position= "100 2 -200"
 			  
 			  animation="property: rotation;
 			  from: 0 0 0;
-			  to: 0 -360 0;
-			  dur: 10000;
+			  to: 0 360 0;
+			  dur: 9500;
 			  loop: true;
 			  easing: linear">
 			 
 			  
-			  
-
 		<!--Basic Plane. 
 		<a-plane color="#CCC" height="20" width="20"></a-plane>
 		-->
 		
 		<!--Textured plane parallel to ground -->
-		<a-plane src="#world" height="100" width = "100" rotation="-90 0 0"></a-plane>
-		
+		<a-image src="#floor2" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+	
+
+
 	</a-entity>
 
+	<!-- 3層目に表示する絵 -->
+	<a-entity scale="4 4 4"
+			position= "100 3.5 -200"
+		
+			animation="property: rotation;
+			from: 0 0 0;
+			to: 0 -360 0;
+			dur: 8000;
+			loop: true;
+			easing: linear">
+		
+		
+	<!--Basic Plane. 
+	<a-plane color="#CCC" height="20" width="20"></a-plane>
+	-->
+	
+	<!--Textured plane parallel to ground -->
+	<a-image src="#floor3" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
 
 
+
+	</a-entity>
+
+	<!-- 4層目に表示する絵 -->
+	<a-entity scale="5 5 5"
+			position= "100 5 -200"
+			
+				animation="property: rotation;
+				from: 0 0 0;
+				to: 0 360 0;
+				dur: 7500;
+				loop: true;
+				easing: linear">
+			
+			
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
+		-->
+		
+		<!--Textured plane parallel to ground -->
+		<a-image src="#floor4" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+	</a-entity>
+	
+
+	<!-- 5層目に表示する絵 -->
+	<a-entity scale="6 6 6"
+			position= "100 6.5 -200"
+		
+			animation="property: rotation;
+			from: 0 0 0;
+			to: 0 -360 0;
+			dur: 7000;
+			loop: true;
+			easing: linear">
+		
+		
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
+		-->
+		
+		<!--Textured plane parallel to ground -->
+		<a-image src="#floor5" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+	</a-entity>
 
   </a-nft>
 
