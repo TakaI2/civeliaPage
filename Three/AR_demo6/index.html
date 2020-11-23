@@ -39,6 +39,15 @@
 	<div>Loading, please wait...</div>
   </div>
 
+  <script>
+	AFRAME.registerComponent('alpha-test', {
+	  dependencies: ['material'],
+	  init: function () {
+		this.el.getObject3D('mesh').material.alphaTest = 0.5;
+	  }
+	});
+  </script>
+
   <!-- シーンを追加 -->
   <!-- <a-scene embedded arjs="debugUIEnabled:false;"> -->
   <a-scene vr-mode-ui="enabled: false;"renderer="logarithmicDepthBuffer: true;" 
@@ -84,16 +93,14 @@
 			loop: true;
 			easing: linear">
 	
-		
-		
 
 	<!--Basic Plane. 
 	<a-plane color="#CCC" height="20" width="20"></a-plane>
 	-->
 
 	<!--Textured plane parallel to ground -->
-	<a-plane src="#world" height="100" width = "100" rotation="-90 0 0"></a-plane>
-
+	<a-image src="#world2" width="100" height="100" position="0 1.6 -1" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+	<a-image src="#world2" width="100" height="100" position="1 1.8 -1.5" rotation="-90 0 0"  transparent="true" ></a-image>
 	</a-entity>
 
 	
@@ -129,11 +136,6 @@
   <!-- カメラを追加 -->
   <a-entity camera></a-entity>
   </a-scene>
-
-  <script>
-	  var video = document.querySelector('#act36');
-	  video.play();
-  </script>
 
 
 </body>
