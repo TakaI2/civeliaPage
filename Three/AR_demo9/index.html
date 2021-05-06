@@ -9,11 +9,6 @@
   <!-- AR.js ライブラリの読み込み -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
-  <style>
-  	*{padding: 0; margin: 0; }
-	canvas{background: #eee ;display: block; margin: 0 auto;}
-  </style>
-
 </head>
 
 <style>
@@ -41,32 +36,7 @@
 <body style='margin: 0; overflow: hidden;'>
 
   <div class="arjs-loader">
-	
-	<canvas id="myCanvas" width="480" height="320"></canvas>
-
-	<script>
-		var canvas = document.getElementById("myCanvas");
-		var ctx = canvas.getContent("2d");
-
-		ctx.beginPath();
-		ctx.rect(20, 40, 50, 50);
-		ctx.fillStyle = "#FF0000";
-		ctx.fill();
-		ctx.closePath();
-
-		ctx.beginPath();
-		ctx.arc(240, 160, 20, 0, Math.PI*2, false);
-		ctx.fillStyle = "green";
-		ctx.fill();
-		ctx.closePath();
-
-		ctx.beginPath();
-		ctx.rect(160, 10, 100, 40);
-		ctx.strokeStyle = "rgba(0, 0, 255, 0.5)";
-		ctx.stroke();
-		ctx.closePath();
-
-	</script>
+	<div>Loading, please wait...</div>
   </div>
 
   <script>
@@ -88,8 +58,6 @@
 		<img id="floor2" src="floor2.png">
 		<img id="floor3" src="floor3.png">
 		<img id="floor4" src="floor4.png">
-		<img id="floor5" src="floor5.png">
-
 	</a-assets>
 
 <!-- もし、このタグを複数作れば、異なる画像マーカごとに別のARを表示できるのでは？ -->
@@ -116,15 +84,10 @@
 
 
 	<!-- 1層目に表示する絵 -->
-	<a-entity scale="2 2 2"
+	<a-entity scale="3.25 0.5 0.5"
 			position= "100 0.5 -200"
-			
-			animation="property: rotation;
-			from: 0 0 0;
-			to: 0 -360 0;
-			dur: 10000;
-			loop: true;
-			easing: linear">
+			rotation = "40 0 0"
+	>
 	
 
 		<!--Basic Plane. 
@@ -138,15 +101,10 @@
 
 	
   	<!-- 2層目に表示する絵 -->
-	<a-entity scale="3 3 3"
-			  position= "100 3 -200"
-			  
-			  animation="property: rotation;
-			  from: 0 0 0;
-			  to: 0 360 0;
-			  dur: 9500;
-			  loop: true;
-			  easing: linear">
+	<a-entity scale="3.6 0.5 0.5"
+			  position= "150 3 0"
+			  rotation= "40 0 0"
+	>
 			 
 			  
 		<!--Basic Plane. 
@@ -162,7 +120,7 @@
 
 	<!-- 3層目に表示する絵 -->
 	<a-entity scale="4 4 4"
-			position= "100 6 -200"
+			position= "150 6 -200"
 		
 			animation="property: rotation;
 			from: 0 0 0;
@@ -201,27 +159,6 @@
 		
 		<!--Textured plane parallel to ground -->
 		<a-image src="#floor4" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
-	</a-entity>
-	
-
-	<!-- 5層目に表示する絵 -->
-	<a-entity scale="6 6 6"
-			position= "100 16 -200"
-		
-			animation="property: rotation;
-			from: 0 0 0;
-			to: 0 -360 0;
-			dur: 7000;
-			loop: true;
-			easing: linear">
-		
-		
-		<!--Basic Plane. 
-		<a-plane color="#CCC" height="20" width="20"></a-plane>
-		-->
-		
-		<!--Textured plane parallel to ground -->
-		<a-image src="#floor5" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
 	</a-entity>
 
   </a-nft>
