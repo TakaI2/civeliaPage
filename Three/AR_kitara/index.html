@@ -54,10 +54,8 @@
   embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
 	<a-assets>
-		<img id="floor1" src="floor1.png">
-		<img id="floor2" src="floor2.png">
-		<img id="floor3" src="floor3.png">
-		<img id="floor4" src="floor4.png">
+		<img id="renew" src="RENEWALOPEN.png">
+		<img id="fubuki" src="hubuki.png">
 	</a-assets>
 
 <!-- もし、このタグを複数作れば、異なる画像マーカごとに別のARを表示できるのでは？ -->
@@ -82,6 +80,10 @@
 	</a-entity>
   -->
 
+    <!-- 円筒を表示して、RENEWALを表示-->
+	<a-entity id="tree" position="30, 12 86">
+		<a-cylinder color="brown" radius="3" height="1"></a-cylinder>
+	</a-entity>
 
 	<!-- 1層目に表示する絵 -->
 	<a-entity scale="3.25 0.5 0.5"
@@ -135,7 +137,7 @@
 	-->
 	
 	<!--Textured plane parallel to ground -->
-	<a-image src="#floor3" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+	<a-image src="#renew" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
 
 
 
@@ -158,7 +160,7 @@
 		-->
 		
 		<!--Textured plane parallel to ground -->
-		<a-image src="#floor4" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+		<a-image src="#fubuki" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
 	</a-entity>
 
   </a-nft>
