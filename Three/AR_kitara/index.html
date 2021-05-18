@@ -82,7 +82,20 @@
 
     <!-- 円筒を表示して、RENEWALを表示-->
 
-	<a-cylinder color="brown" position="0 1 -5" radius="30" height="10"></a-cylinder>
+	<a-cylinder color="brown" 
+				position="0 1 -5" 
+				radius="300" 
+				height="100"
+				
+				animation = "property:rotation; 
+				from: 0 0 0; 
+				to: 0 -360 0;
+				dur: 2000;
+				easing: liner;
+				loop: true"
+				src="#renew"
+				
+				></a-cylinder>
 
 
 	<!-- 1層目に表示する絵 -->
