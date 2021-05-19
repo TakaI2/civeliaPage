@@ -136,89 +136,33 @@
 	
 
 	<!--平面にRENEWALを表示して縮小-->
+	<a-entity 	scale="1 1 1"
+				position="100 10 -200"
+  				rotation="-90 0 0"
+  	>
+
+		<a-plane
+
+		animation = "property: scale; 
+
+		to: 1.5 1.5 1.5; 
+		dur: 2000; 
+		easing: linear; 
+		loop: true" 
+
+		src= "#renewal2" 
+		transparent="true"
+		alpha-test ="0.5"
+
+		></a-plane>
+
+	</a-entity>
 
 	<!--平面に吹雪を表示して拡大-->
 
-	<!-- 1層目に表示する絵 -->
-	<a-entity scale="3.25 0.5 0.5"
-			position= "100 0.5 -200"
-			rotation = "0 0 0"
-	>
-	
-
-		<!--Basic Plane. 
-		<a-plane color="#CCC" height="20" width="20"></a-plane>
-		-->
-
-		<!--Textured plane parallel to ground -->
-		<a-image src="#floor1" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
-		
-	</a-entity>
-
-	
-  	<!-- 2層目に表示する絵 -->
-	<a-entity scale="3.6 0.5 0.5"
-			position= "150 3 0"
-			rotation= "40 0 0"
-
-	>
-			 
-			  
-		<!--Basic Plane. 
-		<a-plane color="#CCC" height="20" width="20"></a-plane>
-		-->
-		
-		<!--Textured plane parallel to ground -->
-		<a-image src="#floor2" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
-	
 
 
-	</a-entity>
-
-	<!-- 3層目に表示する絵 -->
-	<a-entity scale="1 1 1"
-			position= "150 6 -200"
-		
-			animation="property: rotation;
-			from: 0 0 0;
-			to: 0 -360 0;
-			dur: 8000;
-			loop: true;
-			easing: linear">
-		
-		
-	<!--Basic Plane. 
-	<a-plane color="#CCC" height="20" width="20"></a-plane>
-	-->
-	
-	<!--Textured plane parallel to ground -->
-	<a-image src="#renew" width="54" height="18" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
-
-
-
-	</a-entity>
-
-	<!-- 4層目に表示する絵 -->
-	<a-entity scale="5 5 5"
-			position= "100 10 -200"
-			
-				animation="property: rotation;
-				from: 0 0 0;
-				to: 0 360 0;
-				dur: 7500;
-				loop: true;
-				easing: linear">
-			
-			
-		<!--Basic Plane. 
-		<a-plane color="#CCC" height="20" width="20"></a-plane>
-		-->
-		
-		<!--Textured plane parallel to ground -->
-		<a-image src="#fubuki" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
-	</a-entity>
-
-  </a-nft>
+</a-nft>
 
 
   <!-- カメラを追加 -->
