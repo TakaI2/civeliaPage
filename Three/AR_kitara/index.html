@@ -82,22 +82,28 @@
 
     <!-- 円筒を表示して、RENEWALを表示-->
 
-	<a-cylinder 
-	
-				animation = "property: rotation; 
-				from: 0 0 0; 
-				to: 0 -360 0; 
-				dur: 2000; 
-				easing: linear; 
-				loop: true" 
-				
-				color="#renew" 
-				position="0 1 -5" 
+	<a-entity 	scale="1 1 1"
+			  	position="100 10 -200"
 				rotation="90 0 0"
-				radius="300" 
-				height="100" 
-				
-				></a-cylinder>
+				>
+
+		<a-cylinder 
+	
+		animation = "property: rotation; 
+		from: 0 0 0; 
+		to: 0 -360 0; 
+		dur: 2000; 
+		easing: linear; 
+		loop: true" 
+		
+		src="#renew" 
+		radius="300" 
+		height="100" 
+		
+		></a-cylinder>
+
+	</a-entity>
+	
 
 	<!-- 1層目に表示する絵 -->
 	<a-entity scale="3.25 0.5 0.5"
