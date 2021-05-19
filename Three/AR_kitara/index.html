@@ -83,24 +83,30 @@
 
 
    	<!--平面を表示して、RENEWALを右から左へ流す-->
-  	<a-entity 	scale="1 1 1"
-  				position="100 0 -200"
-				rotation="90 0 0"
+	   <a-entity 	scale="1 1 1"
+	   position="100 10 -200"
+	   rotation="-90 0 0"
+	 >
+		
+		<a-cylinder 
 
-				animation="property: position;
-  						from: -100 0 0;
-						to: 100 0 0;
-						dir: alternate;
-						dur: 1000;
-						loop: true"					
-				>
+		animation = "property: rotation; 
+		from: 0 0 0; 
+		to: 0 -360 0; 
+		dur: 1000; 
+		easing: linear; 
+		loop: true" 
 
-				<a-image 
-				src="#renewal1"  
-				transparent="true" 
-				alpha-test="0.5"></a-image>
-			
-	</a-entity>
+		radius="200" 
+		height="300" 
+
+		src= "#renewal1" 
+		transparent="true"
+		alpha-test ="0.5"
+
+		></a-cylinder>	
+
+		</a-entity>
 
     <!-- 円筒を表示して、RENEWALを表示-->
 
@@ -108,25 +114,6 @@
 			  	position="100 10 -200"
 				rotation="-90 0 0"
 				>
-  		<!-- 円筒
-		<a-cylinder 
-	
-		animation = "property: rotation; 
-		from: 0 0 0; 
-		to: 0 -360 0; 
-		dur: 2000; 
-		easing: linear; 
-		loop: true" 
-		
-  		src= "#fubuki" 
-		transparent="true"
-		alpha-test ="0.5"
-
-		radius="200" 
-		height="300" 
-		
-		></a-cylinder>
-		-->
 
 		<a-sphere
 	
