@@ -54,7 +54,8 @@
   embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
 	<a-assets>
-		<img id="renewal" src="hubuki2.png">
+		<img id="renewal1" src="RENEWALOPEN.png">
+		<img id="renewal2" src="hubuki2.png">
 		<img id="fubuki" src="hubuki.png">
 	</a-assets>
 
@@ -79,6 +80,24 @@
 	  >
 	</a-entity>
   -->
+
+
+   	<!--平面を表示して、RENEWALを右から左へ流す-->
+  	<a-entity 	scale="1 1 1"
+  				position="100 0 -200"
+				rotation="-90 0 0"
+
+				animation="property: position;
+						from: -100 0 0
+						to: 100 0 0;
+						dur: 1000;
+						loop: true"					
+				>
+
+
+				<a-image src="#renewal1" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+			
+	</a-entity>
 
     <!-- 円筒を表示して、RENEWALを表示-->
 
@@ -117,7 +136,7 @@
 		
 		radius="150"
 
-  		src= "#renewal" 
+  		src= "#renewal2" 
 		transparent="true"
 		alpha-test ="0.5"
 		
@@ -125,6 +144,10 @@
 
 	</a-entity>
 	
+
+	<!--平面にRENEWALを表示して縮小-->
+
+	<!--平面に吹雪を表示して拡大-->
 
 	<!-- 1層目に表示する絵 -->
 	<a-entity scale="3.25 0.5 0.5"
@@ -145,8 +168,9 @@
 	
   	<!-- 2層目に表示する絵 -->
 	<a-entity scale="3.6 0.5 0.5"
-			  position= "150 3 0"
-			  rotation= "40 0 0"
+			position= "150 3 0"
+			rotation= "40 0 0"
+
 	>
 			 
 			  
