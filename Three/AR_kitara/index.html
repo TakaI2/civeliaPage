@@ -44,7 +44,35 @@
 	  dependencies: ['material'],
 	  init: function () {
 		this.el.getObject3D('mesh').material.alphaTest = 0.5;
+
+		this.modeNo = 0;
+		this.dtsum = 0;
+	  },
+
+	  update: function(){
+			var en = document.querySelector('#mode1');
+
+			if((this.modeNo % 2) == 0){
+				en.setAttribute('visible', false);
+			}else{
+				en.setAttribute('visible', true);
+			}
+	  },
+
+	  tick: function(t, dt){
+			this.dtsum+=dt;
+			if(this.dtsum >= 1000){
+				this.dtsum = 0;
+				if(this.modeNo >= 3){
+					this.modeNo = 0;
+				}else{
+					this.modeNo += 1;
+				}
+				this.update();
+			}
 	  }
+
+
 	});
   </script>
 
@@ -83,7 +111,11 @@
 
 
    	<!--平面を表示して、RENEWALを右から左へ流す-->
-	   <a-entity 	scale="1 1 1"
+	   <a-entity 	
+	   id="mode1"
+	   visible="false"
+
+	   scale="1 1 1"
 	   position="100 10 -200"
 	   rotation="-90 0 0"
 	 >
