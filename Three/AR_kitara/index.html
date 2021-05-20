@@ -50,18 +50,41 @@
 	  },
 
 	  update: function(){
-			var en = document.querySelector('#mode1');
+			var en0 = document.querySelector('#mode0');
+			var en1 = document.querySelector('#mode1');
+			var en2 = document.querySelector('#mode2');
+			var en3 = document.querySelector('#mode3');
 
-			if((this.modeNo % 2) == 0){
-				en.setAttribute('visible', false);
+
+			if(this.modeNo == 0){
+				en0.setAttribute('visible', true);
 			}else{
-				en.setAttribute('visible', true);
+				en0.setAttribute('visible', false);
 			}
+
+			if(this.modeNo == 1){
+				en1.setAttribute('visible', true);
+			}else{
+				en1.setAttribute('visible', false);
+			}
+
+			if(this.modeNo == 2){
+				en2.setAttribute('visible', true);
+			}else{
+				en2.setAttribute('visible', false);
+			}
+
+			if(this.modeNo == 3){
+				en3.setAttribute('visible', true);
+			}else{
+				en3.setAttribute('visible', false);
+			}
+
 	  },
 
 	  tick: function(t, dt){
 			this.dtsum+=dt;
-			if(this.dtsum >= 1000){
+			if(this.dtsum >= 5000){
 				this.dtsum = 0;
 				if(this.modeNo >= 3){
 					this.modeNo = 0;
@@ -112,7 +135,7 @@
 
    	<!--平面を表示して、RENEWALを右から左へ流す-->
 	   <a-entity 	
-	   id="mode1"
+	   id="mode0"
 	   visible="false"
 
 	   scale="1 1 1"
@@ -142,19 +165,14 @@
 
     <!-- 円筒を表示して、RENEWALを表示-->
 
-	<a-entity 	scale="1 1 1"
-			  	position="100 10 -200"
-				rotation="-90 0 0"
+	<a-entity 	
+		id="mode1"
+		visible="false"	
 
-				animation="property: visible;
-				from: false;
-				to: true;
-				dir: reverse;
-				delay: 5000;				
-
-				">
-
-				>
+		scale="1 1 1"
+		position="100 10 -200"
+		rotation="-90 0 0"
+		>
 
 		<a-sphere
 	
@@ -177,10 +195,14 @@
 	
 
 	<!--平面にRENEWALを表示して縮小-->
-	<a-entity 	scale="10 1 10"
-				position="100 10 -200"
-  				rotation="-90 0 0"
-  	>
+	<a-entity 
+		id="mode2"
+		visible="false"
+
+		scale="10 1 10"		
+		position="100 10 -200"	
+		rotation="-90 0 0"
+		>
 
 		<a-image
 
@@ -202,10 +224,14 @@
 	</a-entity>
 
 	<!--平面に吹雪を表示して拡大-->
-	<a-entity 	scale="1 1 1"
-			  	position="100 10 -200"
-				rotation="-90 0 0"
-				>
+	<a-entity 	
+		id="mode3"
+		visible="false"
+	
+		scale="1 1 1"
+		position="100 10 -200"
+		rotation="-90 0 0"
+		>
 
 		<a-sphere
 	
