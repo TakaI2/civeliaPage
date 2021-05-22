@@ -52,39 +52,20 @@
 	  update: function(){
 			var en0 = document.querySelector('#mode0');
 			var en1 = document.querySelector('#mode1');
-			var en2 = document.querySelector('#mode2');
-			var en3 = document.querySelector('#mode3');
-
 
 			if(this.modeNo == 0){
-				en0.setAttribute('visible', true);
-			}else{
-				en0.setAttribute('visible', false);
+				en0.play();
 			}
 
 			if(this.modeNo == 1){
-				en1.setAttribute('visible', true);
-			}else{
-				en1.setAttribute('visible', false);
-			}
-
-			if(this.modeNo == 2){
-				en2.setAttribute('visible', true);
-			}else{
-				en2.setAttribute('visible', false);
-			}
-
-			if(this.modeNo == 3){
-				en3.setAttribute('visible', true);
-			}else{
-				en3.setAttribute('visible', false);
+				en1.play();
 			}
 
 	  },
 
 	  tick: function(t, dt){
 			this.dtsum+=dt;
-			if(this.dtsum >= 5000){
+			if(this.dtsum >= 2000){
 				this.dtsum = 0;
 				if(this.modeNo >= 3){
 					this.modeNo = 0;
@@ -105,9 +86,8 @@
   embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
 	<a-assets>
-		<img id="renewal1" src="renewal1.png">
-		<img id="renewal2" src="hubuki2.png">
-		<img id="fubuki" src="hubuki.png">
+		<img id="renewal1" src="Renewal.png">
+		<img id="fubuki" src="fubuki.png">
 	</a-assets>
 
 <!-- もし、このタグを複数作れば、異なる画像マーカごとに別のARを表示できるのでは？ -->
@@ -120,41 +100,9 @@
       smoothThreshold="5"
   >
 
-   	<!--平面を表示して、RENEWALを右から左へ流す-->
-	   <a-entity 	
-	   id="mode0"
-	   visible="false"
-
-	   scale="1 1 1"
-	   position="100 10 -200"
-	   rotation="-90 0 0"
-	 >
-		
-		<a-cylinder 
-
-		animation = "property: rotation; 
-		from: 0 0 0; 
-		to: 0 -360 0; 
-		dur: 5000; 
-		easing: linear; 
-		loop: true" 
-
-		radius="350" 
-		height="280" 
-
-		src= "#renewal1" 
-		transparent="true"
-		alpha-test ="0.5"
-
-		></a-cylinder>	
-
-		</a-entity>
-
-    <!-- 円筒を表示して、RENEWALを表示-->
+    <!-- 球を表示して、2021.7.1 THU RENEWALを表示-->
 
 	<a-entity 	
-		id="mode1"
-		visible="false"	
 
 		scale="1 1 1"
 		position="100 10 -200"
@@ -170,9 +118,9 @@
 		easing: linear; 
 		loop: true" 
 		
-		radius="150"
+		radius="200"
 
-  		src= "#renewal2" 
+  		src= "#renewal1" 
 		transparent="true"
 		alpha-test ="0.5"
 		
@@ -181,39 +129,9 @@
 	</a-entity>
 	
 
-	<!--平面にRENEWALを表示して縮小-->
-	<a-entity 
-		id="mode2"
-		visible="false"
-
-		scale="10 1 10"		
-		position="100 10 -200"	
-		rotation="-90 0 0"
-		>
-
-		<a-image
-
-		animation = "property: scale; 
-		from: 3 3 3;
-		to: 0.1 0.1 0.1; 
-		dur: 5000; 
-		easing: linear; 
-		loop: true" 
-
-		src= "#renewal2" 
-		width="650"
-		height="470"
-		transparent="true"
-		alpha-test ="0.5"
-
-		></a-image>
-
-	</a-entity>
-
-	<!--平面に吹雪を表示して拡大-->
+	<!--吹雪1を表示して拡大-->
 	<a-entity 	
-		id="mode3"
-		visible="false"
+		id="mode0"
 	
 		scale="1 1 1"
 		position="100 10 -200"
@@ -239,6 +157,35 @@
 
 	</a-entity>
 	
+
+	<!--吹雪1を表示して拡大-->
+	<a-entity 	
+		id="mode1"
+	
+		scale="1 1 1"
+		position="0 10 -200"
+		rotation="-90 0 0"
+		>
+
+		<a-sphere
+	
+		animation = "property: scale; 
+		from: 0 0 0; 
+		to: 10 10 10; 
+		dur: 5000; 
+		easing: linear; 
+		loop: true" 
+		
+		radius="150"
+
+  		src= "#fubuki" 
+		transparent="true"
+		alpha-test ="0.5"
+		
+		></a-sphere>
+
+	</a-entity>
+
 
 
 </a-nft>
