@@ -59,7 +59,7 @@
 				en0.play();
 			}else{
 				
-				//en0.setAttribute('visible', false);
+				en0.setAttribute('visible', false);
 			}
 
 			if(this.modeNo == 1){
@@ -67,7 +67,7 @@
 				en1.play();
 			}else{
 				
-				//en1.setAttribute('visible', false);
+				en1.setAttribute('visible', false);
 			}
 
 			if(this.modeNo == 2){
@@ -75,7 +75,7 @@
 				en2.play();
 			}else{
 				
-				//en2.setAttribute('visible', false);
+				en2.setAttribute('visible', false);
 			}
 
 	  },
@@ -84,11 +84,17 @@
 			this.dtsum+=dt;
 			if(this.dtsum >= 1000){
 				this.dtsum = 0;
+
+				/*
 				if(this.modeNo >= 3){
 					this.modeNo = 0;
 				}else{
 					this.modeNo += 1;
 				}
+				*/
+				
+  				modeNo = Math.floor(Math.random() * 3);
+
 				this.update();
 			}
 	  }
