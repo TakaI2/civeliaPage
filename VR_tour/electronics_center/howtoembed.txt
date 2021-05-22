@@ -1,0 +1,8 @@
+To embed please use:
+
+<div id="embed-vrx">
+    <script src="[YOUR_URL]/vrxembed.js" allow="noautoplay" data-width="100%" data-height="100%" div-container="embed-vrx">
+    </script>
+</div>
+
+You can change width and height. 
