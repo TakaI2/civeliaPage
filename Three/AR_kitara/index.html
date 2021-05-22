@@ -59,7 +59,7 @@
 				en0.play();
 			}else{
 				
-				en0.setAttribute('visible', false);
+				//en0.setAttribute('visible', false);
 			}
 
 			if(this.modeNo == 1){
@@ -67,7 +67,7 @@
 				en1.play();
 			}else{
 				
-				en1.setAttribute('visible', false);
+				//en1.setAttribute('visible', false);
 			}
 
 			if(this.modeNo == 2){
@@ -75,14 +75,14 @@
 				en2.play();
 			}else{
 				
-				en2.setAttribute('visible', false);
+				//en2.setAttribute('visible', false);
 			}
 
 	  },
 
 	  tick: function(t, dt){
 			this.dtsum+=dt;
-			if(this.dtsum >= 2000){
+			if(this.dtsum >= 600){
 				this.dtsum = 0;
 				if(this.modeNo >= 3){
 					this.modeNo = 0;
@@ -213,7 +213,7 @@
 		visible="false"	
 	
 		scale="1 1 1"
-		position="20 10 200"
+		position="20 10 -300"
 		rotation="-90 0 0"
 		>
 
