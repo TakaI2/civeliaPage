@@ -7,16 +7,100 @@
     <script src="../../aframe-master/dist/aframe-master.js"></script>
   </head>
   <body>
+
+    <script>
+      AFRAME.registerComponent('alpha-test', {
+        dependencies: ['material'],
+        init: function () {
+        this.el.getObject3D('mesh').material.alphaTest = 0.5;
+    
+        this.modeNo = 0;
+        this.dtsum = 0;
+        },
+    
+        update: function(){
+          var en0 = document.querySelector('#mode0');
+          var en1 = document.querySelector('#mode1');
+          var en2 = document.querySelector('#mode2');
+          var en3 = document.querySelector('#mode3');
+    
+    
+          if(this.modeNo == 0){
+            en0.setAttribute('visible', true);
+          }else{
+            en0.setAttribute('visible', false);
+          }
+    
+          if(this.modeNo == 1){
+            en1.setAttribute('visible', true);
+          }else{
+            en1.setAttribute('visible', false);
+          }
+    
+          if(this.modeNo == 2){
+            en2.setAttribute('visible', true);
+          }else{
+            en2.setAttribute('visible', false);
+          }
+    
+          if(this.modeNo == 3){
+            en3.setAttribute('visible', true);
+          }else{
+            en3.setAttribute('visible', false);
+          }
+    
+        },
+    
+        tick: function(t, dt){
+          this.dtsum+=dt;
+          if(this.dtsum >= 5000){
+            this.dtsum = 0;
+            if(this.modeNo >= 3){
+              this.modeNo = 0;
+            }else{
+              this.modeNo += 1;
+            }
+            this.update();
+          }
+        }
+       
+      });
+    </script>
+
     <a-scene>
       <a-sky src="GS_0043.jpg" rotation="0 -130 0"></a-sky>
 
       <a-text font="kelsonsans" value="Puy de Sancy, France" width="6" position="-2.5 0.25 -1.5"
-              rotation="0 15 0"></a-text>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+      rotation="0 15 0"></a-text>
 
+      <a-entity
+        id="mode1"
+        visible="false"
+        >
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+      </a-entity>
+
+     <a-entity
+        id="model2"
+        visible="false"
+        >
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+     </a-entity>
+      
+     <a-entity
+        id="model3"
+        visible="false"
+        >
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+     </a-entity>
+      
+     <a-entity
+        id="model4"
+        visible="false"
+        >
+        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+     </a-entity>
+      
     </a-scene>
   </body>
 </html>
