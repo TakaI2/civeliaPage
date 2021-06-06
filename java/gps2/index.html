@@ -1,0 +1,77 @@
+<title>Googleマップに位置を表示</title>
+<style>
+    /*Googleマップに位置を表示させるにはstyle内でwidthとheightの指定が必要 */
+    #mapDiv{width: 100%; height: 800px;}
+</style>
+</head>
+
+<body>
+    <div id="txt">ここにデータを表示</div>
+    <div id="mapDiv"></div>
+
+    <script>
+        var mapDiv = document.getElementById("mapDiv");     //地図を置く場所
+        var gmap;                                           //GoogleマップのMapオブジェクトのための変数
+        var mark;                                           //GoogleマップのMakerオブジェクトのための変数
+
+        // GPSセンサの値が変化したら何らか実行する geolocation.watchPositionメソッド
+        navigator.geolocation.watchPosition((position) => {
+            var lat = position.coords.latitude;     //緯度を取得
+            var lng = position.coords.longitude;    //経度を取得
+            var accu = position.coords.accuracy;    //緯度・経度の精度を取得
+            displayData(lat, lng, accu);            //displayData　関数をじっこう
+            showMyPos(lat, lng);                    //showMyPos　関数を実行           
+        },
+        (error) => {
+
+        },
+        {
+            enableHighAccuracy: true                //データを表示するdiv要素の取得
+        });
+
+        //データを表示する　displayData 関数
+        function displayData(lat, lng, accu){
+            var txt = document.getElementById("txt");   //データを表示するdiv要素の取得
+            txt.innerHTML = "緯度,　経度: " + lat + ", " + lng + "<br>" //データ表示
+                            + "精度: " + accu;
+        }
+
+        //自分の位置を表示する showMyPos関数
+        function showMyPos(lat, lng){
+            var myPos = new google.maps.LatLng(lat, lng);   //GoogleマップのLatLng オブジェクトを作成
+            gmap.setCenter(myPos);
+            mark.setPosition(myPos)
+        }
+
+        //地図の初期化
+        function initMap(){
+            //1回だけ現在位置を測定するgetCurrentPosition メソッド
+            navigator.geolocation.getCurrentPosition((position) => {
+                var lat = position.coords.latitude;     //緯度を取得
+                var lng = position.coords.longitude;    //経度を取得
+                var initPos = new google.maps.LatLng(lat, lng); //初期位置を指定
+                gmap = new google.maps.Map(mapDiv, {    //Mapオブジェクトを作成してmapDivに表示
+                    center: initPos,                    //地図の中心をinitPosに設定
+                    zoom: 16                            //ズーム倍率
+                });
+                mark = new google.maps.Marker({
+                    map: gmap,
+                    position: initPos,
+                });
+            },
+            (error) => {
+
+            },             
+            {
+                enableHighAccuracy: true            //高精度で測定するオプション               
+            });
+        }
+
+    </script>
+
+    <!--Googleマップを読み込むための外部スクリプトの読込み-->   
+    <!--API_KEYの部分を自身で取得したAPIキーで置き換える-->
+    <!--callback=initMapにより、マップの準備ができたらinitMap関数が実行される-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEk6Ez6eaiKK_pTuM_op7D3M3D4fyoO8&callback=initMap" type="text/javascript">
+    </script>
+</body>
