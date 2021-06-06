@@ -1,21 +1,46 @@
-[
+﻿[
     {
-        "name": "EAGLE前",
+        "name": "EAGLE",
         "lat":43.103690,
         "lng":141.343298,
         "img":"0.png"
     },
     {
-        "name": "ギャラリー前",
+        "name": "Gallary",
         "lat":43.103223,
         "lng":141.343129,
         "img":"1.png"
     },
     {
-        "name": "公園前",
+        "name": "koenmae",
         "lat":43.104555,
         "lng":141.344241,
         "img":"2.png"
+    },
+    {
+        "name": "nakanokawa",
+        "lat":43.086089,
+        "lng":141.276686,
+        "img":"3.png"
+    },
+    {
+        "name": "miyanosawa",
+        "lat":43.086463,
+        "lng":141.276187,
+        "img":"4.png"
+    },
+    {
+        "name": "rosesan",
+        "lat":43.080666,
+        "lng":141.364761,
+        "img":"5.png"
+    },
+    {
+        "name": "palcoat",
+        "lat":43.081133,
+        "lng":141.364960,
+        "img":"6.png"
     }
+
 
 ]
