@@ -1,7 +1,7 @@
 <title>シベリアGo</title>
 <style>
     /*Googleマップに位置を表示させるにはstyle内でwidthとheightの指定が必要 */
-    #mapDiv{width: 100%; height: 800px;}
+    #mapDiv{width: 100%; height: 400px;}
 </style>
 </head>
 
@@ -9,7 +9,7 @@
     <div id="txt">ここにデータを表示</div>
     <div id="mapDiv"></div>                 <!--地図を描く-->
     <img id="getImg" src="" hidden>         <!--捕獲したモンスターを表示するimg要素-->
-    <canvas id "cap" width="300" height="60"></canvas>
+    <canvas id="cap" width="300" height="60"></canvas>
 
     <script>
         var mapDiv = document.getElementById("mapDiv");     //地図を置く場所
@@ -109,14 +109,14 @@
         //自分と人魚との距離を計算する calcDistance関数
         function calcDistance(lat, lng){
             var distance = [];                                  //距離を入れる配列
-            var myPos = newgoogle.maps.LatLng(lat, lng);        //GoogleマップのLatLngオブジェクトを作成
+            var myPos = new google.maps.LatLng(lat, lng);        //GoogleマップのLatLngオブジェクトを作成
             for(var i = 0; i < mermaids.length; i++){           //全ての人魚について
                 var pos =new google.maps.LatLng(mermaids[i].lat, mermaids[i].lng);      //人魚の位置を設定
                 distnce[i] = google.maps.geometry.spherical.computeDistanceBetween(myPos, pos); //距離を求める
                 //捕獲の判定と捕獲したときのエフェクト
                 if(distance[i] < 20 && captured[i] === false){      //距離が20m未満、かつ、まだ捕獲していないなら
                     captured[i] = true;                             //捕獲済みにする
-                    getImg.src - mermaids[i].img;                   //ほかくされたモンスターの画像を設定
+                    getImg.src = mermaids[i].img;                   //ほかくされたモンスターの画像を設定
                     context.drawImage(getImg, i * 60, 0, 60, 60);   //捕獲済みの枠にモンスターの画像を表示
                     getImg.hidden = false;                          //img要素を表示
                     mapDiv.hidden = true;                           //地図を非表示
