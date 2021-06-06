@@ -21,7 +21,7 @@
         loadMermaids();                     //  人魚の情報を読込む
         var getImg = document.getElementById("getImg"); //img要素の取得
         var canvas = document.getElementById("cap");    //捕獲人魚を入れるcanvas要素の取得
-        var context = canvas.getContent("2d");          //contextの取得
+        var context = canvas.getContext("2d");          //contextの取得
         context.fillStyle = "rgb(153, 217, 234)";       //塗りつぶす色をターコイズにする
         context.fillRect(0, 0, 300, 60);                //canvasを塗りつぶす
 
