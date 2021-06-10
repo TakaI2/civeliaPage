@@ -40,7 +40,27 @@
         "lat":43.081133,
         "lng":141.364960,
         "img":"6.png"
+    },
+    {
+        "name": "wonderland1",
+        "lat":43.040323,
+        "lng":141.252407,
+        "img":"1.png"
+    },
+    {
+        "name": "wonderland2",
+        "lat":43.040611,
+        "lng":141.252537,
+        "img":"3.png"
+    },
+    {
+        "name": "wonderland3",
+        "lat":43.040111,
+        "lng":141.364960,
+        "img":"6.png"
     }
+
+
 
 
 ]
