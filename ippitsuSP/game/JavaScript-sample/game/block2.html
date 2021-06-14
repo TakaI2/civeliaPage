@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var Bx=100,By=200,Dx=10,Dy=10;  // ボール位置と移動量
+    var Rx=200,Ry=400;              // ラケットの位置
+　　var Point=0,BallN=3,TimeID;     // 得点、ボール残数、タイムID
+    var M=new Array(4);             // ブロック情報配列
+    var Level=100;
+    function move()
+    {
+        var i,j,n;
+        TimeID=setTimeout("move()",Level);
+        var ball=document.getElementById("ball");
+        By+=Dy;Bx+=Dx;
+        ball.style.top=By+"px";ball.style.left=Bx+"px";
+        if (Bx<=50 || Bx+10>=450)
+            Dx=-Dx;
+        if (By<=50 || (Rx-10<=Bx && Bx<=Rx+50 && By+10==Ry))
+            Dy=-Dy;
+        if (Dy<0)
+            i=parseInt((By-100)/20);  // ボール位置から、ブロックの位置を計算する
+        else
+            i=parseInt((By-90)/20); 
+        j=parseInt((Bx-100)/50);
+        if (100<=Bx && 90<=By && 0<=i && i<=3 && 0<=j && j<=5 && M[i][j]==1){  // ブロックがあれば
+            n=i*6+j;      // ブロックのIDを求める
+            document.getElementById("block"+n).style.visibility="hidden";  // 非表示にする
+            M[i][j]=0;                      // 配列情報を0にすることで、ブロックなし状態を示す
+            Dy=-Dy;
+            Point+=10;                        // 得点の加算と表示
+            document.getElementById("PointMsg").value=Point+"点";
+            if (Point%240==0) {
+                clearTimeout(TimeID);
+                Bx=parseInt(Math.random()*30)*10+50;By=200;
+                Dy=10;
+                if (Level>=40) Level-=20
+                init();
+            }
+        }
+        if (By>420){
+            BallN--;               // ボールの残数を減らす
+            document.getElementById("BallMsg").value="残り"+BallN+"個";
+            clearTimeout(TimeID);  // ボールを停止する
+            if (BallN>0){
+                Bx=parseInt(Math.random()*30)*10+50;By=200;  
+                setTimeout("move()",1000);  //１秒後に再開 
+            }
+        }       
+    }  
+    function racket(event)
+    {
+        var bar=document.getElementById("bar");
+        Rx=event.clientX-25;
+        if (50<=Rx && Rx+50<=450)
+            bar.style.left=Rx+"px";
+    } 
+    function init()
+    {
+        var i,j,n=0,tag="";  
+        window.resizeTo(550,700);  // ウィンドウサイズを変更
+        for (i=100;i<=160;i+=20){  //　ブロックの配置
+            for (j=100;j<=350;j+=50){
+                tag+="<img id='block"+n+"' src='blockbar.png' style='position:absolute;left:"+j+"px;top:"+i+"px' />";
+                n++;
+            }
+        }
+        document.getElementById("canvas").innerHTML=tag;
+        for (i=0;i<4;i++){      // 4行6列のブロックの情報を表す2次元配列
+            M[i]=new Array(6);
+            for (j=0;j<6;j++){
+                M[i][j]=1;      // i行j列のブロックがあれば1
+            }
+        } 
+        Bx=parseInt(Math.random()*30)*10+50;By=200;
+        move();
+    }
+</script>
+</head>
+<body onMouseMove="racket(event)">
+<div style="position:absolute;left:180px;top:20px">
+<input id="BallMsg" type="text" size="10" value="残り3個" />
+<input id="PointMsg" type="text" size="10" value="0点" />
+</div>
+<img src="wall.png" style="position:absolute;left:46px;top:46px" />
+<img id="ball" src="ball.png" style="position:absolute;left:-20px;top:0px" />
+<img id="bar" src="bar.png" style="position:absolute;left:200px;top:400px" onClick="init()" />
+<div id="canvas">
+</div>
+</body>
+</html>

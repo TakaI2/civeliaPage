@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var node=["お米が好き",
+              "味噌汁が好き",
+              "パスタが好き",
+              "和食派",
+              "中華派",
+              "イタリアン",
+              "フレンチ"];
+    var left=[1,3,5,-1,-1,-1,-1];
+    var right=[2,4,6,-1,-1,-1,-1];
+
+    function check()
+    {
+        var p=0;
+        while (left[p]!=-1){
+            if (confirm(node[p]))
+                p=left[p];
+            else
+                p=right[p];
+        }
+        alert(node[p]);
+    }
+</script>
+</head>
+<body>
+<input type="button" value="食文化診断" onClick="check()" />
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function draw()
+    {
+        var obj,x,y,a,b,n=0;
+        a=document.getElementById("fact1").value;
+        b=document.getElementById("fact2").value;
+        for (x=-200;x<=200;x++){
+            y=(a*x*x*x+b*x*x)/10000;
+            obj=document.getElementById("dot"+n);
+            obj.style.left=(250+20+x)+"px";
+            obj.style.top=(250+50-y)+"px";
+            n++;
+        }
+    }
+</script>
+</head>  
+<body>
+a<input id="fact1" type="text" size="4" />
+b<input id="fact2" type="text" size="4" />
+<input type="button" value="ƒOƒ‰ƒt" onClick="draw()" />
+<img src="axis.png" style="position:absolute;left:20px;top:50px" />
+<div id="canvas" style="position:absolute;left:0px;top:0px">
+</div>
+<script type="text/JavaScript">
+    var i,tag="";
+    for (i=0;i<1000;i++){
+        tag+="<img src='dot.png' id='dot"+i+"' style='position:absolute;top:0px;left:0px' />";
+    }
+    document.getElementById("canvas").innerHTML=tag;
+</script>
+</body>
+</html>

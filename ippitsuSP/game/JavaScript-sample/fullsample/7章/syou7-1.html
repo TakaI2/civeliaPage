@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var m,NX,NY;
+    function draw(event)
+    {
+        var x,y,n,obj;
+        x=Math.floor((event.clientX-20)/10);
+        y=Math.floor((event.clientY-30)/10);
+        if (0<=x && x<NX && 0<=y && y<NY){
+            n=y*NX+x;
+            obj=document.getElementById("square"+n);
+            if (m[y][x]==0){
+                obj.src="black.png";
+                m[y][x]=1;
+            }
+            else {
+                obj.src="block.png";
+                m[y][x]=0;
+            }
+        }
+    }
+    function init()
+    {
+        var x,y,n=0,tag="";
+        NY=document.getElementById("NY").value;
+        NX=document.getElementById("NX").value;
+        for (y=30;y<30+10*NY;y+=10){
+            for (x=20;x<20+10*NX;x+=10){
+                tag+="<img id='square"+n+"' src='block.png' style='position:absolute;left:"+x+"px;top:"+y+"px' onClick='draw(event)' />";
+                n++;
+            }
+        }
+        document.getElementById("canvas").innerHTML=tag;
+        m=new Array(NY);
+        for (y=0;y<NY;y++){
+            m[y]=new Array(NX);
+            for (x=0;x<NX;x++){
+                m[y][x]=0;
+            }
+        }
+    }
+</script>
+</head>
+<body>
+<div style="position:absolute;left:20px;top:5px">
+Y:<input id="NY" type="text" size="4" />
+X:<input id="NX" type="text" size="4" />
+<input type="button" value="•\Ž¦" onClick="init()" />
+</div>
+<div id="canvas">
+</div>
+</body>
+</html>

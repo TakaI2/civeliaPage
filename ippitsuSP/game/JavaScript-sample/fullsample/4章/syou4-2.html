@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function uranai()
+    {
+        var i,couple,s=0;
+        var boy=document.getElementById("boy");
+        var girl=document.getElementById("girl");
+        couple=boy.value+girl.value;
+        for (i=0;i<couple.length;i++){
+            s+=couple.charCodeAt(i);
+        }
+        var result=document.getElementById("result");
+        result.value=s%101+"%";
+    }
+</script>
+</head>
+<body>
+<input id="boy" type="text" size="12" />‚Æ
+<input id="girl" type="text" size="12" />‚Ì
+<input type="button" value="‘Š«“x" onClick="uranai()" />‚Í
+<input id="result" type="text" size="6" />
+</body>
+</html>

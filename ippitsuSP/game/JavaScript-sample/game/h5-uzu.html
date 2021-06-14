@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var LPX,LPY,Angle;
+    function move(leng) // 指定長の直線
+    {
+        var x,y;
+        x=leng*Math.cos(Angle*Math.PI/180);
+        y=leng*Math.sin(Angle*Math.PI/180);
+        context.lineTo(LPX+x,LPY-y);
+        context.stroke();
+        LPX=LPX+x;LPY=LPY-y;
+    }
+    function turn(angle) // 回転
+    {
+        Angle+=angle;
+        Angle=Angle%360;
+    }
+    function setangle(angle) // 角度の設定
+    {
+        Angle=angle;
+    }
+    function setpoint(x,y) // 位置の設定
+    {
+        LPX=x;LPY=y;
+        context.moveTo(LPX,LPY);
+    }
+</script>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    if(canvas.getContext){
+        var context = canvas.getContext("2d");
+        context.strokeStyle ="blue"; 
+    }
+    var leng=200,angle=73,step=1;
+    setpoint(80,300);
+    setangle(0);
+    while (leng>10){ // 渦巻き模様
+        move(leng);
+        turn(angle);
+        leng-=step;
+    }
+</script>
+</body>
+</html>
+

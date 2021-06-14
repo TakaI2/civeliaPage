@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function kaijo(n)  
+    {
+        if (n==0) 
+            return 1;
+        else
+            return n*kaijo(n-1);
+    }
+</script>
+</head>
+<body>
+<textarea id="result" rows="14" cols="20"></textarea>
+<script type="text/javascript">
+    var n;
+    var resul=document.getElementById("result");
+    for (n=0;n<13;n++){
+        result.value+=n+"!="+kaijo(n)+"\n";
+    }
+</script>
+</html>

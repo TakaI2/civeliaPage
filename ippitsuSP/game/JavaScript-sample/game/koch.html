@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/JavaScript">
+    var n=1,LPX,LPY,Angle;
+    function koch(m,leng)
+    {
+        if (m==0){
+            move(leng);
+        }
+        else {
+            koch(m-1,leng);turn(60);
+            koch(m-1,leng);turn(-120); 
+            koch(m-1,leng);turn(60);
+            koch(m-1,leng);
+        }
+    }
+    function move(leng)
+    {
+        var x,y;
+        x=leng*Math.cos(Angle*3.1415927/180);
+        y=leng*Math.sin(Angle*3.1415927/180);
+        line(LPX,LPY,LPX+x,LPY-y);
+        LPX=LPX+x;LPY=LPY-y;
+    }
+    function turn(a)
+    {
+        Angle+=a;
+        Angle=Angle-parseInt(Angle)+parseInt(Angle)%360;
+    }
+    function setangle(a)
+    {
+        Angle=a;
+    }
+    function setpoint(x,y)
+    {
+        LPX=x;LPY=y;
+    }
+    function line(x1,y1,x2,y2){
+        var i,x,y,w,h,dx,dy,fin,obj;
+        w=x2-x1;
+        h=y2-y1;
+        if (Math.abs(w)>Math.abs(h))
+            fin=Math.abs(w);
+        else
+            fin=Math.abs(h);
+        dx=w/fin;
+        dy=h/fin;
+        for (i=0;i<=fin;i++){
+            obj=document.getElementById("dot"+n); 
+            x1+=dx
+            y1+=dy;
+            obj.style.left=parseInt(x1)+"px";
+            obj.style.top=parseInt(y1)+"px";
+            n++; 
+        }
+    }
+</script>
+</head>
+<body>
+<div id="canvas">
+</div>
+<script type="text/JavaScript">
+    var i,j,tag="";
+    for (i=1;i<=2000;i++){
+        tag+='<img src="dot.png" id="dot'+i+'" style="position:absolute" />';
+    }
+    document.getElementById("canvas").innerHTML=tag;
+    setpoint(50,100);
+    setangle(0);
+    for (i=1;i<=3;i++){
+        koch(4,2);
+        turn(-120);
+    }
+</script>
+</body>
+</html>

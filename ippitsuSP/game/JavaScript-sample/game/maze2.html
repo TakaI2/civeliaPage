@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var NY,NX,Si,Sj,Ei,Ej;  // マスの縦と横、入口位置、出口位置
+    var W=20;               // 壁の長さ
+    var M,G;        // 迷路配列
+    var oldY,oldX,H,V; // 移動の前の位置、水平線と垂直線のid番号
+    function move(event)
+    {
+        var obj,mouse,i,j;
+        i=parseInt((oldY+10)/20);j=parseInt((oldX+10)/20);
+        if (event.keyCode==115 && (M[i][j-1]&2)==0){
+            oldX-=20;//左
+            if (G[i][j-1]==0){ //線を引く時は移動先の配列
+                G[i][j-1]="h"+H;
+                obj=document.getElementById("h"+H);H++;
+                obj.style.top=oldY+"px";obj.style.left=oldX+"px";
+            }
+            else {
+                obj=document.getElementById(G[i][j]);
+                obj.style.visibility="hidden";
+                G[i][j]=0;  // 消すときは今いる位置の配列
+            }
+        }
+        if (event.keyCode==100 && (M[i][j]&2)==0){//右
+            if (G[i][j+1]==0){
+                G[i][j+1]="h"+H;
+                obj=document.getElementById("h"+H);H++;
+                obj.style.top=oldY+"px";obj.style.left=oldX+"px";
+            }
+            else {
+                obj=document.getElementById(G[i][j]);
+                obj.style.visibility="hidden";
+                G[i][j]=0;
+            }
+            oldX+=20;
+        }
+        if (event.keyCode==101 && (M[i][j]&1)==0){//上
+            oldY-=20;
+            if (G[i-1][j]==0){
+                G[i-1][j]="v"+V;
+                obj=document.getElementById("v"+V);V++;
+                obj.style.top=oldY+"px";obj.style.left=oldX+"px";
+            }
+            else {
+                obj=document.getElementById(G[i][j]);
+                obj.style.visibility="hidden";
+                G[i][j]=0;
+            }
+        }
+        if (event.keyCode==120 && (M[i+1][j]&1)==0){//下
+            if (G[i+1][j]==0){
+                G[i+1][j]="v"+V;
+                obj=document.getElementById("v"+V);V++;
+                obj.style.top=oldY+"px";obj.style.left=oldX+"px";
+            }
+            else {
+                obj=document.getElementById(G[i][j]);
+                obj.style.visibility="hidden";
+                G[i][j]=0;
+            }
+            oldY+=20;       
+        }
+        mouse=document.getElementById("mouse");
+        mouse.style.top=oldY-5+"px";mouse.style.left=oldX-5+"px";
+    }
+    function genmaze(i,j)  // 迷路の作成
+    {
+        var n;
+        M[i][j]|=4;
+        while (M[i][j+1]==3 || M[i+1][j]==3 || M[i][j-1]==3 || M[i-1][j]==3){
+            n=Math.floor(Math.random()*4)+1;
+            if (n==1 && M[i][j+1]==3){
+                M[i][j]&=0xd;
+                genmaze(i,j+1);
+            }
+            else if(n==2 && M[i-1][j]==3){
+                M[i][j]&=0xe;
+                genmaze(i-1,j);
+            }
+            else if(n==3 && M[i][j-1]==3){
+                M[i][j-1]&=0xd;
+                genmaze(i,j-1);
+            }
+            else if(n==4 && M[i+1][j]==3){
+                M[i+1][j]&=0xe;
+                genmaze(i+1,j);
+            }
+        }
+    }
+    function meiro()
+    {
+        var i,j,tag="";
+        NY=parseInt(document.getElementById("NY").value);
+        NX=parseInt(document.getElementById("NX").value);
+        Si=1;Sj=1;Ei=NY;Ej=NX;
+        oldY=10;oldX=10;H=0;V=0;
+        M=new Array(NY+2);
+        G=new Array(NY+2);
+        for (i=0;i<NY+2;i++){
+            M[i]=new Array(NX+2);
+            G[i]=new Array(NX+2);
+        }
+        for (i=0;i<NY+2;i++){
+            for (j=0;j<NX+2;j++){
+                if (i==0 || j==0 || i==NY+1 || j==NX+1)
+                    M[i][j]=15;
+                else
+                    M[i][j]=3;
+                G[i][j]=0;
+            }
+        }
+        G[1][1]=1;   //始点用特殊処理
+        genmaze(Ei,Ej);
+        M[Ei][Ej]&=0xd;
+        for (i=1;i<=NY;i++){
+            for (j=1;j<=NX;j++){
+                x=(j-1)*W;
+                y=(i-1)*W;
+                if (M[i][j] & 1){
+                    tag+="<img src='upwall.png' style='position:absolute;left:"+x+"px;top:"+y+"px' />";
+                }
+                if (M[i][j] & 2){
+                    tag+="<img src='rightwall.png' style='position:absolute;left:"+(x+W)+"px;top:"+y+"px' />";
+                }
+            }
+        } 
+        tag+="<img src='mazeh.png' style='position:absolute;left:0px;top:"+(NY*20)+"px;height:1px;width:"+(NX*20)+"px'>"; // 下壁
+        tag+="<img src='mazev.png' style='position:absolute;left:0px;top:20px;width:1px;height:"+(NY*20-20)+"px' />";       // 左壁
+        for (i=0;i<100;i++){
+            tag+="<img id='h"+i+"' src='hline.png' style='position:absolute;left:-40px;top:0px' />";
+            tag+="<img id='v"+i+"' src='vline.png' style='position:absolute;left:-40px;top:0px' />";
+        }
+        tag+="<img id='mouse' src='mouse.png' style='position:absolute;left:5px;top:5px' />";
+        document.getElementById("canvas").innerHTML=tag;
+    }
+</script>
+</head>
+<body onKeyPress="move(event)">
+<div style="position:absolute;left:20px;top:10px" />
+横<input id="NX" type="text" size="5" />縦<input id="NY" type="text" size="3" />
+<input type="button" value="迷路" onClick="meiro()" />
+</div> 
+<div id="canvas" style="position:absolute;left:20px;top:40px">
+</div>
+</body>
+</html>

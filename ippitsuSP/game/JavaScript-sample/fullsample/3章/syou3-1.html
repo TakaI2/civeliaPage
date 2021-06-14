@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function calc()
+    {
+        var t1=document.getElementById("t1");
+        var t2=document.getElementById("t2");
+        var t3=document.getElementById("t3");
+        t3.value=eval(t1.value)+eval(t2.value);
+    }
+</script>
+</head>
+<body>
+<input id="t1" type="text" size="8" />Å{
+<input id="t2" type="text" size="8" />
+<input type="button" value="ÅÅ" onClick="calc()" />
+<input id="t3" type="text" size="8" />
+</body>
+</html>

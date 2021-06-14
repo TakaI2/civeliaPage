@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function disp(img,n)
+    {
+        var i,tag="";
+        for (i=0;i<n;i++){
+            tag+="<img src='"+img+"' />";
+        }
+        tag+="<br />";
+        document.body.innerHTML+=tag;
+    }
+</script>
+</head>
+<body>
+<script type="text/javascript">
+    disp("yui.gif",3);
+    disp("lisa.gif",4);
+    disp("ayaka.gif",5);
+</script>
+</body>
+</html>

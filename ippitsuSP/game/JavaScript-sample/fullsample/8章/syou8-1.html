@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var girl=["さき","あやか","はるか","あや","なな","ゆい"];
+    var age=[18,19,21,20,17,23];
+    var left=[1,3,4,-1,-1,-1];
+    var right=[2,-1,5,-1,-1,-1];
+    function search()
+    {
+        var p=0;
+        var obj=document.getElementById("result");
+        while (p!=-1){
+            if (obj.value==girl[p]){
+                obj.value=girl[p]+"："+age[p]+"才";
+                return;
+            }
+            else if (obj.value<girl[p])
+                p=left[p];
+            else
+                p=right[p];
+        }
+        obj.value="見つかりません";
+    }
+</script>
+</head>
+<body>
+<input id="result" type="text" size="16" />
+<input type="button" value="サーチ" onClick="search()" />
+</body>
+</html>

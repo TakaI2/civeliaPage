@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var cy=0,y=0;
+    function scroll()
+    {
+        var obj=document.getElementById("number");
+        obj.style.clip="rect("+cy+"px,60px,"+(60+cy)+"px,0px)";
+        obj.style.top=y+"px";
+        cy-=10;
+        y+=10;
+        if (cy<=0){
+            cy=60*10;
+            y=-60*10;
+        }
+    }
+</script>
+</head>
+<body onLoad="setInterval(scroll,100)">
+<img id="number" src="number.gif" style="position:absolute;left:0px;top:0px" />
+</body>
+</html>

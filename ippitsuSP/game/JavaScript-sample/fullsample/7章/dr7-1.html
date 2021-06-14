@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function draw(event)
+    {
+        var x,y,n,obj;
+        x=Math.floor((event.clientX-10)/20);
+        y=Math.floor((event.clientY-10)/20);
+        if (0<=x && x<8 && 0<=y && y<8){
+            n=y*8+x;
+            obj=document.getElementById("square"+n);
+            obj.src="black2.png";
+        }
+    }
+</script>
+</head>
+<body>
+<div id="canvas">
+</div>
+<script type="text/javascript">
+    var x,y,n=0,tag="";
+    for (y=10;y<=160;y+=20){
+        for (x=10;x<=160;x+=20){
+            tag+="<img id='square"+n+"' src='block2.png' style='position:absolute;left:"+x+"px;top:"+y+"px' onClick='draw(event)' />";
+            n++;
+        }
+    }
+    document.getElementById("canvas").innerHTML=tag;
+</script>
+</body>
+</html>

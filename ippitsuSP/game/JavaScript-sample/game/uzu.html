@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/JavaScript">
+    var DotNumber=1,MaxDot=5000,LPX,LPY,Angle;
+    function move(leng)
+    {
+        var x,y;
+        x=leng*Math.cos(Angle*3.1415927/180);
+        y=leng*Math.sin(Angle*3.1415927/180);
+        line(LPX,LPY,LPX+x,LPY-y);
+        LPX=LPX+x;LPY=LPY-y;
+    }
+    function turn(a)
+    {
+        Angle+=a;
+        Angle=Angle-parseInt(Angle)+parseInt(Angle)%360;
+    }
+    function setangle(a)
+    {
+        Angle=a;
+    }
+    function setpoint(x,y)
+    {
+        LPX=x;LPY=y;
+    }
+    function line(x1,y1,x2,y2){
+        var i,x,y,w,h,dx,dy,fin,obj;
+        w=x2-x1;
+        h=y2-y1;
+        if (Math.abs(w)>Math.abs(h))
+            fin=Math.abs(w);
+        else
+            fin=Math.abs(h);
+        dx=w/fin;
+        dy=h/fin;
+        for (i=0;i<=fin;i++){
+            obj=document.getElementById("dot"+DotNumber); 
+            x1+=dx
+            y1+=dy;
+            obj.style.left=parseInt(x1)+"px";
+            obj.style.top=parseInt(y1)+"px";
+            DotNumber++; 
+        }
+    }
+</script>
+</head>
+<body>
+<div id="canvas">
+</div>
+<script type="text/JavaScript">
+    var Id,tag="";
+    for (Id=1;Id<=MaxDot;Id++){
+        tag+='<img src="dot.png" id="dot'+Id+'" style="position:absolute" />';
+    }
+    document.getElementById("canvas").innerHTML=tag;
+    // ‰Q‚Ü‚«–Í—l
+    var leng=100,angle=73,step=1;
+    setpoint(50,170);
+    setangle(0);
+    while (leng>10){
+        move(leng);
+        turn(angle);
+        leng-=step;
+    }
+</script>
+</body>
+</html>

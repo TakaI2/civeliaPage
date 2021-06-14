@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var m=new Array(16);
+    function draw(event)
+    {
+        var x,y,n,obj;
+        x=Math.floor((event.clientX-10)/10);
+        y=Math.floor((event.clientY-10)/10);
+        if (0<=x && x<16 && 0<=y && y<16){
+            n=y*16+x;
+            obj=document.getElementById("square"+n);
+            if (m[y][x]==0){
+                obj.src="black.png";
+                m[y][x]=1;
+            }
+            else {
+                obj.src="block.png";
+                m[y][x]=0;
+            }
+        }
+    }
+</script>
+</head>
+<body>
+<div id="canvas">
+</div>
+<script type="text/javascript">
+    var x,y,n=0,tag="";
+    for (y=10;y<=160;y+=10){
+        for (x=10;x<=160;x+=10){
+            tag+="<img id='square"+n+"' src='block.png' style='position:absolute;left:"+x+"px;top:"+y+"px' onClick='draw(event)' />";
+            n++;
+        }
+    }
+    document.getElementById("canvas").innerHTML=tag;
+    for (y=0;y<16;y++){
+        m[y]=new Array(16);
+        for (x=0;x<16;x++){
+            m[y][x]=0;
+        }
+    }
+</script>
+</body>
+</html>

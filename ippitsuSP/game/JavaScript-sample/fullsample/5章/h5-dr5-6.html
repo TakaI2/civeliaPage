@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var context;
+    function axis() // é≤ê¸
+    {
+        context.strokeStyle="black";
+        context.beginPath();
+        context.moveTo(0,340);
+        context.lineTo(640,340);
+        context.moveTo(340,0);
+        context.lineTo(340,640);
+        context.stroke();
+    }
+    function draw()
+    {
+        var x,y,a,b;
+        a=document.getElementById("fact1").value;
+        b=document.getElementById("fact2").value;
+        for (angle=0;angle<=360;angle+=.5){
+            x=150*Math.sin(a*angle*Math.PI/180);
+            y=150*Math.sin(b*angle*Math.PI/180);
+            if (angle==0)
+                context.moveTo(340+x,340-y);
+            else
+                context.lineTo(340+x,340-y);
+        }
+        context.stroke();
+    }
+</script>
+</head>
+<body>
+a<input id="fact1" type="text" size="4" />
+b<input id="fact2" type="text" size="4" />
+<input type="button" value="ÉOÉâÉt" onClick="draw()" /><br />
+<canvas id="canvas" width="640" height="640"></canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    if(canvas.getContext){
+        context = canvas.getContext("2d"); 
+        axis();
+    }
+</script>
+</body>
+</html>

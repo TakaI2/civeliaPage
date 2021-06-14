@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var result;
+    function hanoi(n,a,b,c)
+    {
+        if (n>0) {
+            hanoi(n-1,a,c,b);
+            result.value+=n+"”Ô‚Ì”Â‚ð"+a+"->"+b+"\n";
+            hanoi(n-1,c,b,a);
+        }
+    }
+    function init()
+    {
+        var n=document.getElementById("number").value;
+        result=document.getElementById("result");
+        result.value="";
+        hanoi(n,"a","b","c");
+    }
+</script>
+</head>
+<body>
+<input id="number" type="text" size="4" />
+<input type="button" value="ƒnƒmƒC" onClick="init()" /><br />
+<textarea id="result" rows="20" cols="20"></textarea>
+</body>
+</html>

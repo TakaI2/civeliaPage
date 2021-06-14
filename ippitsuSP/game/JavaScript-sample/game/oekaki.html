@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/JavaScript">
+    var ClickFlag=false,DrawMode="free",MaxDot=5000,oldX,oldY;
+    var DrawColor="blackdot.png",DotSize=1;
+    var Stack=new Array(MaxDot),SP=MaxDot-1;
+    var Area=new Array(360);
+    function width(obj)
+    {
+        DotSize=obj.options[obj.selectedIndex].value;
+    }
+    function color(obj)
+    {
+        DrawColor=obj.options[obj.selectedIndex].value;
+    }
+    function check(obj)
+    {
+        DrawMode=obj.options[obj.selectedIndex].value;
+    }
+    function erase(x1,y1,x2,y2)
+    {
+        var x,y,t,obj;
+        if (x1>x2){
+            t=x1;x1=x2;x2=t;
+        }
+        if (y1>y2){
+            t=y1;y1=y2;y2=t;
+        }
+        for (y=y1;y<=y2;y++){
+            for (x=x1;x<=x2;x++){
+                if (Area[y][x]!=0){
+                    obj=document.getElementById("dot"+Area[y][x]); 
+                    obj.style.left=0;
+                    obj.style.top=0;
+                    SP++;
+                    Stack[SP]=Area[y][x];
+                    Area[y][x]=0;
+                }
+            }
+        }
+    }                                 
+    function free()  // 自由曲線
+    {
+        var x,y,obj;
+        if (DrawMode=="free" && ClickFlag==true){
+            x=event.clientX;
+            y=event.clientY;
+            if (Area[y][x]==0){
+                obj=document.getElementById("dot"+Stack[SP]); 
+                Area[y][x]=Stack[SP];
+                SP--; 
+            }
+            else {
+                obj=document.getElementById("dot"+Area[y][x]);
+            }
+            obj.src=DrawColor;
+            obj.style.width=DotSize+"px";
+            obj.style.height=DotSize+"px";
+            obj.style.left=x+"px";
+            obj.style.top=y+"px";
+            window.status="残りドット＝"+SP;
+        }
+    }
+    function line(x1,y1,x2,y2)  // 直線
+    {
+        var i,w,h,dx,dy,fin,x,y,obj;
+        w=x2-x1;
+        h=y2-y1;
+        if (Math.abs(w)>Math.abs(h))
+            fin=Math.abs(w);
+        else
+            fin=Math.abs(h);
+        dx=w/fin;
+        dy=h/fin;
+        for (i=0;i<=fin;i++){
+            x=parseInt(x1);
+            y=parseInt(y1);
+            if (Area[y][x]==0){
+                obj=document.getElementById("dot"+Stack[SP]); 
+                Area[y][x]=Stack[SP];//obj.style.leftを添字にするとエラー
+                SP--; 
+            }
+            else {  // 既にドットがある場合
+                obj=document.getElementById("dot"+Area[y][x]);
+            }
+            x1+=dx
+            y1+=dy;
+            obj.src=DrawColor;
+            obj.style.width=DotSize+"px";
+            obj.style.height=DotSize+"px";
+            obj.style.left=x+"px";
+            obj.style.top=y+"px";
+        }
+    }
+    function circle(x1,y1,x2,y2)  // 円
+    {
+        var x,y,r,a,cx,cy,obj;
+        cx=(x1+x2)/2;  // 中心
+        cy=(y1+y2)/2;
+        r=Math.abs(x2-x1)/2;  // 半径
+        for (a=0;a<360;a+=5){
+            x=parseInt(cx+r*Math.cos(a*3.1415927/180));
+            y=parseInt(cy-r*Math.sin(a*3.1415927/180));
+            if (Area[y][x]==0){
+                obj=document.getElementById("dot"+Stack[SP]); 
+                Area[y][x]=Stack[SP];//obj.style.leftを添字にするとエラー
+                SP--; 
+            }
+            else {
+                obj=document.getElementById("dot"+Area[y][x]);
+            }
+            obj.src=DrawColor;
+            obj.style.width=DotSize+"px";
+            obj.style.height=DotSize+"px";
+            obj.style.left=x+"px";
+            obj.style.top=y+"px";
+        }
+    }
+    function draw()
+    {
+        if (ClickFlag) {
+            switch (DrawMode){
+                case "line"　:line(oldX,oldY,event.clientX,event.clientY);
+                            　break;
+                case "circle":circle(oldX,oldY,event.clientX,event.clientY);
+                            　break;
+                case "erase":erase(oldX,oldY,event.clientX,event.clientY);
+                            　break;
+            }
+        }
+        else {
+            oldX=event.clientX;
+            oldY=event.clientY;
+        }
+        ClickFlag=!ClickFlag;
+        window.status="残りドット＝"+SP;
+    }
+    function init()
+    {
+        var i,j;
+        for (i=0;i<360;i++){
+            Area[i]=new Array(420);
+            for (j=0;j<420;j++){
+                Area[i][j]=0;
+            }
+        }
+    }      
+</script>
+</head>
+
+<body onLoad="init()">
+<div>
+描画モード
+<select onChange="check(this)">
+<option value="free" />自由曲線
+<option value="line" />直線
+<option value="circle" />円
+<option value="erase" />消去
+</select>
+色
+<select onChange="color(this)">
+<option value="blackdot.png" />黒
+<option value="bluedot.png" />青
+<option value="reddot.png" />赤
+</select>
+太さ
+<select onChange="width(this)">
+<option value="1" />1
+<option value="2" />2
+<option value="3" />3
+</select>
+</div>
+<img src="canvas.png" style="position:absolute;left:10px;top:50px" onClick="draw()" onMouseMove="free()" /> 
+<div id="canvas" style="position:absolute;left:0px;top:0px">
+</div>
+<script type="text/JavaScript">
+    var Id,tag="";
+    for (Id=1;Id<=MaxDot;Id++){
+        tag+='<img src="blackdot.png" id="dot'+Id+'" style="position:absolute" onClick="draw()" />';
+        Stack[Id]=Id;
+    } 
+    document.getElementById("canvas").innerHTML=tag; 
+</script>
+</body>
+</html>

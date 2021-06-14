@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var LPX,LPY,Angle;
+    function koch(n,leng) // n次のコッホ曲線
+    {
+        if (n==0){
+            move(leng);
+        }
+        else {
+            koch(n-1,leng);turn(60);
+            koch(n-1,leng);turn(-120); 
+            koch(n-1,leng);turn(60);
+            koch(n-1,leng);
+        }
+    }
+    function move(leng)
+    {
+        var x,y;
+        x=leng*Math.cos(Angle*Math.PI/180);
+        y=leng*Math.sin(Angle*Math.PI/180);
+        context.lineTo(LPX+x,LPY-y);
+        context.stroke();
+        LPX=LPX+x;LPY=LPY-y;
+    }
+    function turn(angle)
+    {
+        Angle+=angle;
+        Angle=Angle%360;
+    }
+    function setangle(angle)
+    {
+        Angle=angle;
+    }
+    function setpoint(x,y)
+    {
+        LPX=x;LPY=y;
+        context.moveTo(LPX,LPY);
+    }
+</script>
+</head>
+<body>
+<canvas id="canvas" width="640" height="640"></canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    if(canvas.getContext){
+        var context = canvas.getContext("2d");
+        context.strokeStyle = "blue"; 
+    }
+    setpoint(50,150);
+    setangle(0);
+    for (var i=1;i<=3;i++){ // コッホ曲線を3つ描く
+        koch(4,5); // 4次のコッホ曲線
+        turn(-120);
+    }
+</script>
+</body>
+</html>

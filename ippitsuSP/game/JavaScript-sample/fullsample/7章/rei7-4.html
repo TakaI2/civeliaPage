@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var Flag =false;
+    window.document.onmousemove=move; // イベント名は小文字で
+    window.document.onmouseup=up;
+
+    function down()
+    {
+        Flag =true;
+    }
+    function up()
+    {
+        Flag =false;
+    }
+    function move()
+    {
+        var x,y,n,obj;
+        x=Math.floor((event.clientX-10)/10);
+        y=Math.floor((event.clientY-10)/10);
+        if (0<=x && x<16 && 0<=y && y<16){
+            n=y*16+x;
+            obj=document.getElementById("square"+n);
+            if (Flag){
+                obj.src="black.png";
+            }
+        }
+        return false;  // 必要
+    }
+</script>
+</head>
+<body>
+<div id="canvas">
+</div>
+<script type="text/javascript">
+    var x,y,n=0,tag="";
+    for (y=10;y<=160;y+=10){
+        for (x=10;x<=160;x+=10){
+            tag+="<img id='square"+n+"' src='block.png' style='position:absolute;left:"+x+"px;top:"+y+"px' onMouseDown='down()' />";
+            n++;
+        }
+    }
+    document.getElementById("canvas").innerHTML=tag;
+</script>
+</body>
+</html>

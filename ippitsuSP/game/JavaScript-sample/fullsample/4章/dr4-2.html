@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function today()
+    {
+        var t,hour,minute,second;
+        var obj=document.getElementById("result");
+        t=new Date();
+        hour=t.getHours();
+        minute=t.getMinutes();
+        second=t.getSeconds();
+        obj.value=hour+":"+minute+":"+second; 
+    }
+</script>
+</head>
+<body onLoad="setInterval(today,1000)">
+Œ»İ‚ÌF
+<input id="result" type="text" size="10" /><br />
+</body>
+</html>

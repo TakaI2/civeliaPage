@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function over1()
+    {
+        var obj=document.getElementById("boy");
+        obj.src="boy2.gif";
+    }
+    function out1()
+    {
+        var obj=document.getElementById("boy");
+        obj.src="boy1.gif";
+    }
+</script>
+</head>
+<body>    
+<img id="boy" src="boy1.gif" onMouseOver="over1()" onMouseOut="out1()" />
+</body>
+</html>

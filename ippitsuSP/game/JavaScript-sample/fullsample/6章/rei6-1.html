@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var x=200,y=100; // ボールの初期位置
+    var dx=10,dy=10; // ボールの移動距離
+    function move()
+    {
+        var ball=document.getElementById("ball");
+        x+=dx;
+        y+=dy;
+        ball.style.left=x+"px";
+        ball.style.top=y+"px";
+        if (x<=50 || x+10>=450)
+            dx=-dx;
+        if (y<=50 || y+10>=450)
+            dy=-dy;
+    }
+</script>
+</head>
+<body onLoad="setInterval(move,100)">
+<img src="wall.png" style="position:absolute;left:46px;top:46px" />
+<img id="ball" src="ball.png" style="position:absolute;left:200px;top:100px" />
+</body>
+</html>

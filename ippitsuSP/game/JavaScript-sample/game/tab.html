@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function change(tab) {
+        document.getElementById("tab1").style.display="none";
+        document.getElementById("tab2").style.display="none";
+        document.getElementById("tab3").style.display="none";
+        document.getElementById(tab).style.display="block";
+    }
+</script>
+<style type="text/css">
+a {
+   display:block;width:5em;float:left;
+   padding:3px;text-align:center;color:white;
+}
+a.tab1 {background-color:blue;}
+a.tab2 {background-color:green;}
+a.tab3 {background-color:olive;}
+div {
+   width:400px;height:150px;clear:left;overflow:scroll;
+}
+div.page1 { border:2px solid blue;}
+div.page2 { border:2px solid green;}
+div.page3 { border:2px solid olive;}
+</style>
+</head>
+<body onLoad="change('tab1')">
+<a href="" class="tab1" onClick="change('tab1');return false;">エンタメ</a>
+<a href="" class="tab2" onClick="change('tab2');return false;">スポーツ</a>
+<a href="" class="tab3" onClick="change('tab3');return false;">グルメ</a>
+<div id="tab1" class="page1">
+   エンタメ情報
+</div>
+<div id="tab2" class="page2">
+   スポーツ情報
+</div>
+<div id="tab3" class="page3">
+   グルメ情報
+</div>
+</body>
+</html>

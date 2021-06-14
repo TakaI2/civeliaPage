@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var x=200,y=100; // ボールの初期位置
+    var dx=10,dy=10; // ボールの移動距離
+    var rx=200;
+    var TimeId;
+    var Point=0;
+    var BallN=3;
+    function move()
+    {
+        var ball=document.getElementById("ball");
+        x+=dx;
+        y+=dy;
+        ball.style.left=x+"px";
+        ball.style.top=y+"px";
+        if (x<=50 || x+10>=450)
+            dx=-dx;
+        if (y<=50)
+            dy=-dy;
+        if (rx-10<=x && x<=rx+50 && y+10==400){
+            dy=-dy;
+            Point+=10;
+            var PointMsg=document.getElementById("PointMsg");
+            PointMsg.value=Point+"点";
+        }
+        if (y>420) {
+            BallN--;
+            var BallMsg=document.getElementById("BallMsg"); 
+            BallMsg.value="残り"+BallN+"個";           
+            ball.style.visibility="hidden";
+            clearInterval(TimeId);
+            if (BallN!=0) {
+                setTimeout("init()",2000);
+            }
+        }
+        if (BallN==0){
+            clearInterval(TimeId);
+        }
+    }
+    function racket(event)
+    {
+        var bar=document.getElementById("bar");
+        rx=event.clientX-25;
+        if (50<=rx && rx+50<=450)
+            bar.style.left=rx+"px";
+    }
+    function init()
+    {
+        var ball=document.getElementById("ball");
+        x=parseInt((Math.random()*300)/10)*10+60;
+        y=parseInt((Math.random()*30)/10)*10+60;
+        ball.style.left=x+"px";
+        ball.style.top=y+"px";
+        ball.style.visibility="visible";
+        TimeId=setInterval(move,100);
+    }
+</script>
+</head>
+<body onMouseMove="racket(event)">
+<div style="position:absolute;left:180px;top:20px">
+<input id="BallMsg" type="text" size="10" value="残り3個" />
+<input id="PointMsg" type="text" size="10" value="0点" />
+</div>
+<img src="wall.png" style="position:absolute;left:46px;top:46px" />
+<img id="ball" src="ball.png" style="position:absolute;visibility:hidden" />
+<img id="bar" src="bar.png" style="position:absolute;left:200px;top:400px" onClick="init()" />
+</body>
+</html>

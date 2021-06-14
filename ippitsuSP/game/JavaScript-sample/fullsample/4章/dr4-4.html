@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var Ques=["重力の発見者は?",
+              "我思う故に我ありと言ったのは?",
+              "オーストリアの首都は?",
+              "７６年周期で現れる彗星は?",
+              "ZARDのボーカルは?"];
+    var Ans=["ニュートン","デカルト","キャンベラ","ハレー彗星","坂井泉水"];
+    function toi()　　
+    {
+        var i,n=0;
+        for (i=0;i<5;i++){
+            if (prompt(Ques[i],"")==Ans[i]){
+                alert("正解");
+                n++;
+            }
+            else
+                alert("正解は"+Ans[i]);
+        }
+        alert(n+"問正解");
+    }
+</script>
+</head>
+<body>
+<input type="button" value="問題" onClick="toi()" />
+</body>
+</html>
