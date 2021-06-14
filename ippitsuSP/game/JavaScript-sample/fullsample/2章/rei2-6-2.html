@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script type="text/javascript">
+    var i,tag="";
+    var girl=[["Œ‹ˆß","yui.gif",21],
+              ["Ê","ayaka.gif",19],
+              ["—¹","lisa.gif",20]];
+    for (i=0;i<3;i++){
+        if (girl[i][2]>=20){
+            tag+="<img src='"+girl[i][1]+"' />";
+            tag+=girl[i][0]+"™"+girl[i][2]+"<br /><br />";
+        }
+    }
+    document.body.innerHTML=tag;
+</script>
+</body>
+</html>

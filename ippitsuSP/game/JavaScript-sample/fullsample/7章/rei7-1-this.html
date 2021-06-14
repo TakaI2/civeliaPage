@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function draw(obj)
+    {
+        obj.src="black.png";
+    }
+</script>
+</head>
+<body>
+<div id="canvas">
+</div>
+<script type="text/javascript">
+    var x,y,tag="";
+    for (y=10;y<=160;y+=10){
+        for (x=10;x<=160;x+=10){
+            tag+="<img src='block.png' style='position:absolute;left:"+x+"px;top:"+y+"px' onClick='draw(this)' />";
+        }
+    }
+    document.getElementById("canvas").innerHTML+=tag;
+</script>
+</body>
+</html>

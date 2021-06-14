@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var Flag=true;
+    function disp()
+    {
+        var oh1=document.getElementById("h1");
+        var oh2=document.getElementById("h2");
+        var sepa=document.getElementById("sepa");        
+        var om1=document.getElementById("m1");
+        var om2=document.getElementById("m2");
+
+        var today=new Date();
+        var h1=parseInt(today.getHours()/10);
+        var h2=today.getHours()%10;
+        var m1=parseInt(today.getMinutes()/10);
+        var m2=today.getMinutes()%10;
+
+        oh1.src="n"+h1+".gif";  
+        oh2.src="n"+h2+".gif";  
+        if (Flag)
+            sepa.src="sepa1.png";
+        else
+            sepa.src="sepa2.png";
+        om1.src="n"+m1+".gif";  
+        om2.src="n"+m2+".gif";  
+        Flag=!Flag;
+    }
+</script>
+</head>
+<body onLoad="setInterval(disp,1000)">    
+<img id="h1" src="n0.gif" />
+<img id="h2" src="n0.gif" />
+<img id="sepa" src="sepa1.png" />
+<img id="m1" src="n0.gif" />
+<img id="m2" src="n0.gif" />
+</body>
+</html>

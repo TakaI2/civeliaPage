@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function disp(m,flag)
+    {
+        var i,j,tag="";
+        for (i=0;i<m.length;i++){
+            for (j=0;j<m[0].length;j++){
+                if (m[i][j]==flag)
+                    tag+="<img src='black.png' />";
+                else
+                    tag+="<img src='block.png' />";
+            }
+            tag+="<br />";
+        }
+        document.body.innerHTML+=tag;
+    }
+</script>
+<body style="line-height:8px;">
+<script type="text/javascript">
+    var m=[[0,1,1,0,0,1,1,0],
+           [1,0,1,0,0,1,0,1],
+           [1,0,0,1,1,0,0,1],
+           [1,0,0,0,0,0,0,1],
+           [1,1,0,0,0,0,1,1],
+           [0,1,0,0,0,0,1,0],
+           [0,0,1,0,0,1,0,0],
+           [0,0,0,1,1,0,0,0]];
+
+    disp(m,1);
+    document.body.innerHTML+="<br />";
+    disp(m,0);
+</script>
+</body>
+</html>

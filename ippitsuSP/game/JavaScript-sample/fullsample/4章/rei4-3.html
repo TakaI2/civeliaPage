@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var Msg="ようこそ私のホームページへ．．．．";
+    function disp()
+    {
+        var obj=document.getElementById("result");
+        Msg=Msg.substring(1,Msg.length)+Msg.substring(0,1);
+        obj.value=Msg;
+    }
+</script>
+</head>
+<body onLoad="setInterval(disp,300)">
+<input id="result" type="text" size="30" />
+</body>
+</html>

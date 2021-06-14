@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function disp(bt)
+    {
+        var obj=document.getElementById("result");
+        obj.value+=bt.value;
+    }
+    function cls()
+    {
+        var obj=document.getElementById("result");
+        obj.value="";
+    }
+</script>
+</head>
+<body>
+<input id="result" type="text" size="40" />
+<input type="button" value="クリア" onClick="cls()" /><br />
+<div id="canvas">
+</div>
+<script type="text/javascript">
+    var alpha="abcdefghijklmnopqrstuvwxyz";
+    var i,tag="";
+    for (i=0;i<26;i++){
+        tag+="<input type='button' value='"+alpha.charAt(i)+"' onClick='disp(this)' />";
+        if (alpha.charAt(i)=="m")  // mで改行。i==12という判定でも良い
+            tag+="<br />";
+    }
+    document.getElementById("canvas").innerHTML=tag;
+</script>
+</body>
+</html>

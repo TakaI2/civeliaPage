@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var Flag=true;        // 白黒手番フラグ
+    var M=[[0,0,0,0,0,0,0,0,0,0],  // 盤面情報配列
+           [0,0,0,0,0,0,0,0,0,0],  // 0:駒無し
+           [0,0,0,0,0,0,0,0,0,0],  // 1:白駒
+           [0,0,0,0,0,0,0,0,0,0],  // 2:黒駒
+           [0,0,0,0,1,2,0,0,0,0],
+           [0,0,0,0,2,1,0,0,0,0],
+           [0,0,0,0,0,0,0,0,0,0],
+           [0,0,0,0,0,0,0,0,0,0],
+           [0,0,0,0,0,0,0,0,0,0],
+           [0,0,0,0,0,0,0,0,0,0]];
+
+    function computer()   // コンピュータの手関数
+    {
+        var i,y,x,n,obj,ban;
+        for (i=0;i<500;i++){
+            y=Math.floor(Math.random()*8)+1;
+            x=Math.floor(Math.random()*8)+1;
+            n=(y-1)*8+(x-1);
+            obj=document.getElementById("img"+n);
+            ban=document.getElementById("img64");
+            ban.src="black.jpg";
+            if (M[y][x]==0 && ok(y,x)){
+                obj.src="white.jpg";
+                M[y][x]=1;
+                reverse(y,x);
+                Flag=!Flag;
+                return;
+            }
+        }
+        Flag=!Flag;  // 手が見つからなければ相手に手を渡す
+    }
+    function reverse(y,x)  // 自動反転関数
+    {
+        var ry,rx,dy,dx,n,obj;
+        for (dx=-1;dx<=1;dx++){
+            for (dy=-1;dy<=1;dy++){
+                if (!(dx==0 && dy==0) && M[y][x]!=M[y+dy][x+dx]){
+                    ry=y;rx=x;
+                    while (1<=rx && rx<=8 && 1<=ry && ry<=8 && M[ry][rx]!=0){
+                        ry+=dy;rx+=dx;
+                        if (M[y][x]==M[ry][rx]){  // 同じ色の駒
+                            ry-=dy;rx-=dx;        // 1つ戻す
+                            while (!(x==rx && y==ry)){
+                                n=(ry-1)*8+(rx-1);
+                                obj=document.getElementById("img"+n);
+                                if (M[ry][rx]==1){  // 白なら黒に
+                                     obj.src="black.jpg";
+                                     M[ry][rx]=2;
+                                }
+                                else {              // 黒なら白に
+                                    obj.src="white.jpg";
+                                    M[ry][rx]=1;
+                                }
+                                ry-=dy;rx-=dx;      // 逆戻り
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    function ok(y,x)  // 置けるか調べる関数
+    {
+        var ry,rx,dy,dx;
+        if (Flag)
+            M[y][x]=2;  // 黒を置く
+        else
+            M[y][x]=1;  // 白を置く
+        for (dx=-1;dx<=1;dx++){
+            for (dy=-1;dy<=1;dy++){
+                if (!(dx==0 && dy==0) && M[y][x]!=M[y+dy][x+dx]){
+                    rx=x;ry=y;
+                    while (1<=rx && rx<=8 && 1<=ry && ry<=8 && M[ry][rx]!=0 ){
+                        rx+=dx;ry+=dy;
+                        if (M[y][x]==M[ry][rx]){  // 同じ色の駒に出会ったとき
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        M[y][x]=0;  // 駒のない状態に戻す
+        return false;
+    }
+    function yx(event)  // クリックイベント処理関数
+    {
+        var y,x,n,obj,ban;
+        y=Math.floor(event.clientY/50);
+        x=Math.floor(event.clientX/50);
+        n=(y-1)*8+(x-1);
+        obj=document.getElementById("img"+n);
+        ban=document.getElementById("img64");
+        if (M[y][x]==0 && ok(y,x)) {
+            obj.src="black.jpg";
+            M[y][x]=2;	
+            reverse(y,x);
+            Flag=!Flag;
+            ban.src="white.jpg";
+            setTimeout("computer()",3000);  // コンピュータの手
+        }
+    }
+    function init()  // 盤面初期化関数
+    {
+        var y,x,img,n=0,tag="";
+        for (y=50;y<=50*8;y+=50){
+            for (x=50;x<=50*8;x+=50){
+                if (n==27 || n==36){       // 白い駒
+                    img="<img src='white.jpg'";
+                }
+                else if (n==28 || n==35){  // 黒い駒
+                    img="<img src='black.jpg'";
+                }
+                else {                     // 駒無し
+                    img="<img src='green.jpg'";
+                }
+                tag+=img+" id='img"+n+"' style='position:absolute;left:"+x+"px;top:"+y+"px' onClick='yx(event)' />";
+                n++;
+            }
+        }
+        tag+="<img id='img64' src='black.jpg' style='position:absolute;left:500px;top:50px' />";
+        document.getElementById("canvas").innerHTML=tag;
+    }
+</script>
+</head>
+<body>
+<div id="canvas">
+</div>
+<script type="text/javascript">
+    init();
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<textarea id="result" rows="10" cols="20"></textarea>
+<script type="text/javascript">
+    var a=["‚³‚«","‚ ‚â‚©","‚Í‚é‚©","‚ ‚â","‚ä‚¢"];
+    var i,j,t,max,s;
+    var resul=document.getElementById("result");
+    for (i=0;i<a.length-1;i++){
+        max=a[i];
+        s=i;
+        for (j=i+1;j<a.length;j++){
+            if (a[j]>max){
+                max=a[j];
+                s=j;
+            }
+        }
+        t=a[i];
+        a[i]=a[s];
+        a[s]=t;
+    }
+    for (i=0;i<a.length;i++){
+        result.value+=a[i]+"\n";
+    }
+</script>
+</body>
+</html>

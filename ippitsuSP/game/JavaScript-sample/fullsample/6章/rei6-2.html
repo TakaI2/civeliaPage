@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var rx=200;
+    function racket(event)
+    {
+        var bar=document.getElementById("bar");
+        rx=event.clientX;
+        if (50<=rx && rx+50<=450)
+            bar.style.left=rx+"px";
+    }
+</script>
+</head>
+<body onMouseMove="racket(event)">
+<img src="wall.png" style="position:absolute;left:46px;top:46px" />
+<img id="bar" src="bar.png" style="position:absolute;left:200px;top:400px" />
+</body>
+</html>

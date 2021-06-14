@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script type="text/javascript">
+    var i,tag="";
+    for (i=32;i<127;i++){
+        if (i%16==0)
+            tag+="<br>";
+        tag+="<font face='FixedSys'> "+String.fromCharCode(i)+"</font>";
+    }
+    document.body.innerHTML=tag;
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift-JIS">
+<script type="text/JavaScript">
+    var y1=0,y2=60,yy1=60,yy2=0,yyy1=120,yyy2=-60,ImageWidth=60,ImageHeight=60
+    var TimeId1,TimeId2,TimeId3;
+    function stop(n)
+    {
+        var obj,dy;
+        switch (n){
+            case 1: clearTimeout(TimeId1);
+                    obj=document.getElementById("img1");
+                    y1-=10;
+                    y2+=10;
+                    dy=(60-y1%60)%60;
+                    y1+=dy;
+                    y2-=dy;
+                    obj.style.clip="rect("+y1+"px,"+ImageWidth+"px,"+(y1+ImageHeight)+"px,0px)";
+                    obj.style.top=y2+"px";
+                    break;
+            case 2: clearTimeout(TimeId2);
+                    obj=document.getElementById("img2");
+                    yy1-=10;
+                    yy2+=10;
+                    dy=(60-yy1%60)%60;
+                    yy1+=dy;
+                    yy2-=dy;
+                    obj.style.clip="rect("+yy1+"px,"+ImageWidth+"px,"+(yy1+ImageHeight)+"px,0px)";
+                    obj.style.top=yy2+"px";
+                    break;
+            case 3: clearTimeout(TimeId3);
+                    obj=document.getElementById("img3");
+                    yyy1-=10;
+                    yyy2+=10;
+                    dy=(60-yyy1%60)%60;
+                    yyy1+=dy;
+                    yyy2-=dy;
+                    obj.style.clip="rect("+yyy1+"px,"+ImageWidth+"px,"+(yyy1+ImageHeight)+"px,0px)";
+                    obj.style.top=yyy2+"px";
+                    break;
+        }
+    }
+    function go1()
+    {
+        var i,obj;
+        TimeId1=setTimeout("go1()",60);
+        obj=document.getElementById("img1");
+        obj.style.clip="rect("+y1+"px,"+ImageWidth+"px,"+(y1+ImageHeight)+"px,0px)";
+        obj.style.top=y2+"px";
+        y1+=10;
+        y2-=10;
+        if (y1>ImageHeight*10-10){
+            y1=0;
+            y2=60;
+        }
+    }  
+    function go2()
+    {
+        var i,obj;
+        TimeId2=setTimeout("go2()",70);
+        obj=document.getElementById("img2");
+        obj.style.clip="rect("+yy1+"px,"+ImageWidth+"px,"+(yy1+ImageHeight)+"px,0px)";
+        obj.style.top=yy2+"px";
+        yy1+=10;
+        yy2-=10;
+        if (yy1>ImageHeight*10-10){
+            yy1=0;
+            yy2=60;
+        }
+    } 
+    function go3()
+    {
+        var i,obj;
+        TimeId3=setTimeout("go3()",80);
+        obj=document.getElementById("img3");
+        obj.style.clip="rect("+yyy1+"px,"+ImageWidth+"px,"+(yyy1+ImageHeight)+"px,0px)";
+        obj.style.top=yyy2+"px";
+        yyy1+=10;
+        yyy2-=10;
+        if (yyy1>ImageHeight*10-10){
+            yyy1=0;
+            yyy2=60;
+        }
+    } 
+</script>
+</head>
+<body>
+<input type="button" value="スロット開始" onClick="go1();go2();go3()" style="position:absolute;left:70px;top:20px" />
+<input type="button" value="停止" onClick="stop(1)" style="position:absolute;left:70px;top:125px" />
+<input type="button" value="停止" onClick="stop(2)" style="position:absolute;left:140px;top:125px" />
+<input type="button" value="停止" onClick="stop(3)" style="position:absolute;left:210px;top:125px" />
+<img src="number.gif" id="img1" style="position:absolute;left:60px;top:60px;clip:rect(0px,60px,60px,0px)" />
+<img src="number.gif" id="img2" style="position:absolute;left:130px;top:0px;clip:rect(60px,60px,120px,0px)" />
+<img src="number.gif" id="img3" style="position:absolute;left:200px;top:-60px;clip:rect(120px,60px,180px,0px)" />
+</body>
+</html>
+
+

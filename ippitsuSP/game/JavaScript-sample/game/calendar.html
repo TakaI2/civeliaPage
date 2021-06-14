@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var Year,Month;
+    function init()
+    {
+        var today=new Date();
+        Year=today.getFullYear();
+        Month=today.getMonth();
+        mannen();
+    }
+    function back()
+    {
+        if (Month==0){
+            Year--;
+            Month=11;
+        }
+        else
+            Month--;
+        mannen();
+    }
+    function next()
+    {
+        if (Month==11){
+            Year++;
+            Month=0;
+        }
+        else
+            Month++;
+        mannen();
+    }
+    function mannen()
+    {
+        var mt=new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+        var i,x,y,tag="";
+        var day=new Date(Year,Month,1);
+        var week=day.getDay();
+        x=week*40+45;y=65;
+        if ((Year % 4)==0 && (Year % 100)!=0 || (Year % 400)==0)
+            mt[1]=29;
+        else
+            mt[1]=28;
+        tag+="<font size='3' style='position:absolute;left:60px;top:20px'>"+Year+"”N"+(Month+1)+"ŒŽ</font>";
+        for (i=1;i<=mt[Month];i++){
+            tag+="<font size='3' style='position:absolute;left:"+x+"px;top:"+y+"px'>"+i+"</font>";
+            x+=40;
+            if ((week+i)%7==0){
+                x=45;
+                y+=40;
+            }
+        }
+        document.getElementById("canvas").innerHTML=tag;
+    }
+</script>
+</head>
+<body onLoad="init()">
+<img src="leftbtn.png" style="position:absolute;left:40px;top:18px" onClick="back()" />
+<img src="rightbtn.png" style="position:absolute;left:160px;top:18px" onClick="next()" />
+<img id="n1" src="calendar.png" style="position:absolute;left:40px;top:40px" />
+<div id="canvas">
+</div>    
+</body>
+</html>

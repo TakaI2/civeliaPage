@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    function init()  // ”Õ–Ê‰Šú‰»ŠÖ”
+    {
+        var y,x,img,n=0,tag="";
+        for (y=50;y<=50*8;y+=50){
+            for (x=50;x<=50*8;x+=50){
+                if (n==27 || n==36){       // ”’‚¢‹î
+                    img="<img src='white.jpg'";
+                }
+                else if (n==28 || n==35){  // •‚¢‹î
+                    img="<img src='black.jpg'";
+                }
+                else {                     // ‹î–³‚µ
+                    img="<img src='green.jpg'";
+                }
+                tag+=img+" id='img"+n+"' style='position:absolute;left:"+x+"px;top:"+y+"px' onClick='yx(event)' />";
+                n++;
+            }
+        }
+        tag+="<img id='img64' src='black.jpg' style='position:absolute;left:500px;top:50px' />";
+        document.getElementById("canvas").innerHTML=tag;
+    }
+</script>
+</head>
+<body>
+<div id="canvas">
+</div>
+<script type="text/javascript">
+    init();
+</script>
+</body>
+</html>

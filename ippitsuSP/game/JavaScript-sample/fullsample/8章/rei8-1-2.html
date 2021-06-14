@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<textarea id="result" rows="10" cols="20"></textarea>
+<script type="text/javascript">
+    var a=[17,35,10,50,20];
+    var junni=new Array(a.length);
+    var i,j;
+    var resul=document.getElementById("result");
+    for (i=0;i<a.length;i++){
+        junni[i]=1;
+        for (j=0;j<a.length;j++){
+            if (a[j]>a[i])
+                junni[i]++;
+        }
+        result.value+=a[i]+"ÅF"+junni[i]+"à \n";
+    }
+</script>
+</body>
+</html>

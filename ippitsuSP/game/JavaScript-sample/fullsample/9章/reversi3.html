@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var M=[[0,0,0,0,0,0,0,0,0,0],  // 盤面情報配列
+           [0,0,0,0,0,0,0,0,0,0],  // 0:駒無し
+           [0,0,0,0,0,0,0,0,0,0],  // 1:白駒
+           [0,0,0,0,0,0,0,0,0,0],  // 2:黒駒
+           [0,0,0,0,1,2,0,0,0,0],
+           [0,0,0,0,2,1,0,0,0,0],
+           [0,0,0,0,0,0,0,0,0,0],
+           [0,0,0,0,0,0,0,0,0,0],
+           [0,0,0,0,0,0,0,0,0,0],
+           [0,0,0,0,0,0,0,0,0,0]];
+
+    function yx(event)  // クリックイベント処理関数
+    {
+        var y,x,n,obj;
+        y=Math.floor(event.clientY/50);
+        x=Math.floor(event.clientX/50);
+        n=(y-1)*8+(x-1);
+        obj=document.getElementById("img"+n);
+        if (M[y][x]==0){       // 駒無し
+            obj.src="black.jpg";
+            M[y][x]=2;
+        }
+        else if (M[y][x]==1){  // 白駒
+            obj.src="black.jpg";
+            M[y][x]=2;
+        }
+        else if (M[y][x]==2){  // 黒駒
+            obj.src="white.jpg";
+            M[y][x]=1;
+        }
+    }
+    function init()  // 盤面初期化関数
+    {
+        var y,x,img,n=0,tag="";
+        for (y=50;y<=50*8;y+=50){
+            for (x=50;x<=50*8;x+=50){
+                if (n==27 || n==36){       // 白い駒
+                    img="<img src='white.jpg'";
+                }
+                else if (n==28 || n==35){  // 黒い駒
+                    img="<img src='black.jpg'";
+                }
+                else {                     // 駒無し
+                    img="<img src='green.jpg'";
+                }
+                tag+=img+" id='img"+n+"' style='position:absolute;left:"+x+"px;top:"+y+"px' onClick='yx(event)' />";
+                n++;
+            }
+        }
+        tag+="<img id='img64' src='black.jpg' style='position:absolute;left:500px;top:50px' />";
+        document.getElementById("canvas").innerHTML=tag;
+    }
+</script>
+</head>
+<body>
+<div id="canvas">
+</div>
+<script type="text/javascript">
+    init();
+</script>
+</body>
+</html>

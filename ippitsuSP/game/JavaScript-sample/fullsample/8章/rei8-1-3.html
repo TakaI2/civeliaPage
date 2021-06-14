@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<textarea id="result" rows="12" cols="20"></textarea>
+<script type="text/javascript">
+    var a=[56,60,76,80,75,81,45,67,
+           73,91,56,78,81,56,90,86];
+    var hist=new Array(11);
+    var i,r;
+    var resul=document.getElementById("result");
+    for (i=0;i<11;i++){
+        hist[i]=0;
+    }
+    for (i=0;i<a.length;i++){
+        r=parseInt(a[i]/10);
+        hist[r]++;
+    }
+    for (i=0;i<11;i++){
+        result.value+=i*10+"-:"+hist[i]+"\n";
+    }
+</script>
+</body>
+</html>

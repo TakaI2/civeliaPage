@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var LPX,LPY,Angle;
+    function move(leng) // éwíËí∑ÇÃíºê¸
+    {
+        var x,y;
+        x=leng*Math.cos(Angle*Math.PI/180);
+        y=leng*Math.sin(Angle*Math.PI/180);
+        context.lineTo(LPX+x,LPY-y);
+        context.stroke();
+        LPX=LPX+x;LPY=LPY-y;
+    }
+    function turn(angle) // âÒì]
+    {
+        Angle+=angle;
+        Angle=Angle%360;
+    }
+    function setangle(angle) // äpìxÇÃê›íË
+    {
+        Angle=angle;
+    }
+    function setpoint(x,y) // à íuÇÃê›íË
+    {
+        LPX=x;LPY=y;
+        context.moveTo(LPX,LPY);
+    }
+</script>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    if(canvas.getContext){
+        var context = canvas.getContext("2d");
+        context.strokeStyle ="blue"; 
+    }
+    for (var n=3;n<=9;n++){
+        setpoint(150,300);
+        setangle(0);
+        for (var i=0;i<n;i++){
+            move(100);
+            turn(360/n);
+        }
+    }
+</script>
+</body>
+</html>
+

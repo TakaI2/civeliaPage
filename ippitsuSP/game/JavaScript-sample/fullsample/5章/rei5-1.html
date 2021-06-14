@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var x=40;
+    function move()
+    {
+        var obj=document.getElementById("face");
+        x+=10;
+        obj.style.left=x+"px";
+    }
+</script>
+</head>
+<body>
+<img id="face" src="face.gif" style="position:absolute;left:40px;top:40px" onClick="move()" />
+</body>
+</html>
