@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script type = "text/javascript">
+        var today = new Date();
+        var h = today.getHours();
+        if(h < 12){
+            document.bgColor = "blue";
+            document.body.innerHTML =  "AM Version<br />";
+        }else{
+            document.bgColor = "yellow";
+            document.body.innerHTML = "PM Version<br />";
+        }
+    </script>
+</body>
+</html>
