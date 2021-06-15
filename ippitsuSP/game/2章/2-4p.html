@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script type = "text/javascript">
+        var today = new Date();
+        var h = today.getHours();
+        if(6 <= h && h < 17){
+            document.bgColor = "yellow";
+            document.body.innerHTML =  "Hataraku Version<br />";
+        }else{
+            document.bgColor = "blue";
+            document.body.innerHTML = "Hatarakanai Version<br />";
+        }
+    </script>
+</body>
+</html>
