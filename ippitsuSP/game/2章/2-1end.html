@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="line-height:8px;">
+    <script type = "text/javascript">
+    var i,j,tag="";
+    for(i=0; i<8; i++){
+        for(j=0; j<8; j++){
+            if(i==j || i+j==7){
+                tag += "<img src='black.png' />";
+            }else{
+                tag += "<img src='block.png' />";
+            }
+        }
+        tag += "<br />";
+    }
+    document.body.innerHTML = tag;
+    </script>
+</body>
+</html>

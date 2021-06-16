@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script type = "text/javascript">
+        var i,tag="";
+        var flag=["canada.gif", "korea.gif", "australia.gif"];
+        var country=["カナダ", "韓国", "オーストラリア"];
+        for(i=0; i<3; i++){
+            tag += "<img src='"+flag[i]+"' />";
+            tag += country[i]+"<br /><br />";
+        }
+        document.body.innerHTML = tag;
+    </script>
+</body>
+</html>
