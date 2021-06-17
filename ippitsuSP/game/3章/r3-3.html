@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        function check(box){
+            var obj = document.getElementById("img");
+            obj.src = box.options[box.selectedIndex].value;
+        }
+    </script>
+</head>
+<body>
+    <img id="img" src="canada.gif" />
+    <select onChange="check(this)">
+        <option value="canada.gif">カナダ</option>
+        <option value="korea.gif">韓国</option>
+        <option value="australia.gif">オーストラリア</option>
+    </select>
+</body>
+</html>

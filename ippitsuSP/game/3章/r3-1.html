@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        function clickEvent(event){
+            var obj = event.target;
+            obj.src = "black.jpg";
+        }
+    </script>
+</head>
+<body>
+    <img src="white.jpg" onClick="clickEvent(event)" />
+    <img src="white.jpg" onClick="clickEvent(event)" />
+</body>
+</html>

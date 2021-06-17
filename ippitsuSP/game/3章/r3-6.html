@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        function disp(){
+            var msg = document.getElementById("msg");
+            var namae = document.getElementById("namae");
+            msg.innerHTML = "ようこそ" + namae.value + "さん";
+        }
+    </script>
+</head>
+<body>
+    <input id="namae" type="text" size="14" />
+    <input type="button" value="表示" onClick="disp()" />
+    <div id="msg">
+        ねこになりたい
+    </div>
+</body>
+</html>

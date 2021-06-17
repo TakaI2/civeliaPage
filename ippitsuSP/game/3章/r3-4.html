@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        function move(event){
+            document.getElementById("result").value = event.clientX + "," + event.clientY;
+        }
+    </script>
+</head>
+<body style="position:absolute;width:100%;height:100%" onMouseMove="move(event)">
+    <input id="result" type="text" size="15" />
+</body>
+</html>
