@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var y = 40;
+        function move(num){
+            var obj = document.getElementById("face");
+            y += num;
+            obj.style.top = y + "px";
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="上" onClick="move(-10)" />
+    <input type="button" value="下" onClick="move(10)" />
+    <img id="face" src="face.gif" style="position:absolute;left:40px;top:40px" />
+</body>
+</html>

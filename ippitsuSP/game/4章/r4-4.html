@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var Ques = ["重力の発見者はニュートンである",
+                    "我思う故に我ありといったのはヘーゲルである",
+                    "オーストリアの首都はシドニーである",
+                    "76年周期で現れる彗星はバルタン彗星である",
+                    "ZARDのボーカルは坂井泉水である"];
+        var Ans = [true, false, false, false, true];
+        function toi(){
+            var i,n=0;
+            for(i=0; i<5; i++){
+                if(confirm(Ques[i]) == Ans[i])
+                    n++;
+            }
+            alert(n+"問正解")
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="問題" onClick="toi()" />
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+    function today(){
+        var obj = document.getElementById("result");
+        var date = new Date();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        obj.value = hour + ":" + minute + ":" + second;
+    }
+    </script>
+</head>
+<body onLoad="setInterval(today, 1000)">
+    現在の時刻: 
+    <input id="result" type="text" size="10" /><br />
+</body>
+</html>

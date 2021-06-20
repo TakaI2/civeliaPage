@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var Msg = "はやくねこになってゆっくりすごしたい"
+        function disp(){
+            var obj = document.getElementById("result");
+            Msg = Msg.substring(Msg.length-1,Msg.length) + Msg.substring(0, Msg.length-1);
+            obj.value = Msg;
+        }
+    </script>
+</head>
+<body onLoad="setInterval(disp, 300)">
+    <input id="result" type="text" size="33" />
+</body>
+</html>
