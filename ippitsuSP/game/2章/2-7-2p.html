@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type = "text/javascript">
+        function f(x){
+            var i,s=0;
+            for(i=0; i<x.length; i++){
+                s += x[i];
+            }
+            return 100 - s;
+        }
+    </script>
+</head>
+<body>
+    <script type = "text/javascript">
+        var a = [1, 2, 3, 4, 5];
+        var b = [10, 20, 30];
+        document.body.innerHTML += "a[] = " + f(a) + "<br />";
+        document.body.innerHTML += "b[] = " + f(b) + "<br />";
+    </script>
+</body>
+</html>

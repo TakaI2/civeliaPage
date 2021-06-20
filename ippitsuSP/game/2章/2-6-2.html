@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script type = "text/javascript">
+        var i,tag="";
+        var girl=[["結衣", "yui.gif", 21],
+                   ["綾香", "ayaka.gif", 19],
+                   ["理沙", "lisa.gif", 20]];
+        document.body.innerHTML = tag;
+        for(i=0; i<3; i++){
+            if(girl[i][2] >= 20){
+                tag += "<img src='" +girl[i][1]+ "' />";
+                tag += girl[i][0] + " 年齢:" + girl[i][2] + "<br /><br />";
+            }
+        }
+        document.body.innerHTML = tag;
+    </script>
+</body>
+</html>
