@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+    function move(event){
+        setTimeout("go(" + event.clientX + "," + event.clientY + ")", 100);
+    }
+    function go(x,y){
+        var obj1 = document.getElementById("chara1");
+        obj1.style.left = x-50 + "px";
+        obj1.style.top = y + "px";
+        var obj2 = document.getElementById("chara2");
+        obj2.style.left = x+50 + "px";
+        obj2.style.top = y + "px";
+    }
+    </script>
+</head>
+<body style="position:absolute;width:100%;height:100%" onMouseMove="move(event)">
+    <img id="chara1" src="chara.gif" style="position:absolute;left:100px;top:100px" />
+    <img id="chara2" src="chara.gif" style="position:absolute;left:100px;top:100px" />
+</body>
+</html>

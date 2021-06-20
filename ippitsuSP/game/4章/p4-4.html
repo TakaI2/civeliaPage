@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var Ques = ["重力の発見者は？",
+                    "ねこになりたいですか？"];
+        var Ans = ["ニュートン", "はい"];
+        function toi(){
+            var i,n=0;
+            for(i=0; i<2; i++){
+                if(prompt(Ques[i]) == Ans[i])
+                    n++;
+            }
+            alert(n+"問正解")
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="問題" onClick="toi()" />
+</body>
+</html>

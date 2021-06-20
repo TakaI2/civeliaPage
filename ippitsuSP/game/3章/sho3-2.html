@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var n=1,TimeId;
+        function stop(){
+            clearTimeout(TimeId);
+        }
+        function move(){
+            var obj = document.getElementById("robo");
+            obj.src = "robo" + n + ".gif";
+            n++;
+            if(n > 8){
+                n = 1;
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="アニメーション開始" onClick="TimeId=setInterval(move,500)" >
+    <input type="button" value="停止" onclick="stop()" /><br />
+    <img id="robo" src="robo1.gif" />
+</body>
+</html>

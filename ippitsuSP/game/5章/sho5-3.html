@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+    var TimeId,t,v,a,n;
+    function move(){
+        var obj = document.getElementById("ball"+n);
+        var x = parseInt(10 + v*t*Math.cos(a*Math.PI/180));
+        var y = parseInt(450 - (v*t*Math.sin(a*Math.PI/180) - 9.8*t*t/2));
+        if(y > 450){
+            clearInterval(TimeId);
+        }else{
+            obj.style.left = x+"px";
+            obj.style.top = y+"px";
+            t++;
+            n++;
+        }
+    }
+    function init(){
+        var obj;
+        for(i=0; i<20; i++){
+            obj = document.getElementById("ball"+i);
+            obj.style.left = "10px";
+            obj.style.top = "450px";
+        }
+        t = 0;
+        n = 0;
+        v = document.getElementById("speed").value;
+        a = document.getElementById("angle").value;
+        TimeId = setInterval(move,1000);
+    }
+    </script>
+</head>
+<body>
+    速度<input id="speed" type="text" size="4" />
+    角度<input id="angle" type="text" size="4" />
+    <input type="button" value="開始" onClick="init()" />
+    <img src="axis2.png" style="position:absolute;left:12px;top:56px" />
+    <div id="canvas" style="position:absolute;left:0px;top:0px">
+    </div>
+    <script type="text/javascript">
+        var i,tag="";
+        for(i=0; i<20; i++){
+            tag += "<img id='ball"+i+"' src='ball.png' style='position:absolute;left:10px;top:450px' />";
+        }
+        document.getElementById("canvas").innerHTML = tag;
+    </script>
+</body>
+</html>

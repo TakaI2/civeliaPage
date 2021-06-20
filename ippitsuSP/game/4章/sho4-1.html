@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        function disp(bt){
+            var obj = document.getElementById("result");
+            obj.value += bt.value;
+        }
+        function cls(){
+            var obj = document.getElementById("result");
+            obj.value = "";
+        }
+    </script>
+</head>
+<body>
+    <input id="result" type="text" size="40" />
+    <input type="button" value="クリア" onClick="cls()" /><br />
+    <div id="canvas">
+    </div>
+    <script type="text/javascript">
+        var i,tag="";
+        var alpha = "abcdefghijklmnopqrstuvwxyz";
+        for(i=0; i<26; i++){
+
+            tag += "<input type='button' value='" + alpha[i] + "' onClick='disp(this)' />";
+            if(alpha[i] == 'm'){
+                tag += "<br />";
+            }
+        }
+        document.getElementById("canvas").innerHTML = tag;
+    </script>
+</body>
+</html>

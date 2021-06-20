@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        function draw(){
+            var obj,theta,x,y,a,b,n=0;
+            a = document.getElementById("fact1").value;
+            b = document.getElementById("fact2").value;
+            for(theta=0.5;theta<360; theta+=0.5){
+                x = Math.sin(a*theta)*150;
+                y = Math.sin(b*theta)*150;
+                obj = document.getElementById("dot"+n);
+                obj.style.left = (250 + 20 + x) + "px";
+                obj.style.top = (250 + 50 + y) + "px";
+                n++;
+            }
+        }
+    </script>
+</head>
+<body>
+    a<input id="fact1" type="text" size="4" />
+    b<input id="fact2" type="text" size="4" />
+    <input type="button" value="グラフ" onClick="draw()" />
+    <img src="axis.png" style="position:absolute;left:20px;top:50px" />
+    <div id="canvas" style="position:absolute;left:0px;top:0px">
+    </div>
+    <script type="text/JavaScript">
+        var i,tag="";
+        for(i=0; i<720; i++){
+            tag += "<img src='dot.png' id='dot"+i+"' style='position:absolute;top:0px;left:0px' />";
+        }
+        document.getElementById("canvas").innerHTML = tag;
+    </script>
+</body>
+</html>

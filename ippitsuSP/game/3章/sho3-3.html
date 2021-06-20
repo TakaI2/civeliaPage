@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    var EnterFlag=false;
+    function disp(n)
+    {
+        var obj=document.getElementById("result");
+        if (EnterFlag){   // Enter�{�^������
+            obj.value="";
+            EnterFlag=false;
+        }
+        obj.value+=n;
+    }
+    function enter()
+    {
+        var obj=document.getElementById("result");
+        obj.value=eval(obj.value);  // ���̌v�Z
+        EnterFlag=true;
+    }
+    function cls()
+    {
+        var obj=document.getElementById("result");
+        obj.value="";
+    }
+</script>
+</head>
+<body>
+<input id="result" type="text" size="20" /><br />
+<input type="button" value=" 7 " onClick="disp(7)" />
+<input type="button" value=" 8 " onClick="disp(8)" />
+<input type="button" value=" 9 " onClick="disp(9)" />
+<input type="button" value="Cls" onClick="cls()" /><br />
+<input type="button" value=" 4 " onClick="disp(4)" />
+<input type="button" value=" 5 " onClick="disp(5)" />
+<input type="button" value=" 6 " onClick="disp(6)" />
+<input type="button" value="*" onClick="disp('*')" />
+<input type="button" value="/" onClick="disp('/')" /><br />
+<input type="button" value=" 1 " onClick="disp(1)" />
+<input type="button" value=" 2 " onClick="disp(2)" />
+<input type="button" value=" 3 " onClick="disp(3)" />
+<input type="button" value="+" onClick="disp('+')" />
+<input type="button" value="-" onClick="disp('-')" /><br />
+<input type="button" value=" 0 " onClick="disp(0)" />
+<input type="button" value="Enter" onClick="enter()" />
+</body>
+</html>

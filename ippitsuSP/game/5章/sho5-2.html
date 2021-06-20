@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var cy=0,y=50,TimeId;
+        function stop(){
+            clearInterval(TimeId);
+            var obj = document.getElementById("myimg");
+            cy = parseInt(cy/60)*60;
+            y = parseInt(-cy/60)*60 + 50;
+            obj.style.clip = "rect("+cy+"px,60px,"+(cy+60)+"px,0px)";
+            obj.style.top = y + "px";
+        }
+        function startInterval(){
+            TimeId = setInterval(scroll,100);
+        }
+        function scroll(){
+            var obj = document.getElementById("myimg");
+            obj.style.clip = "rect("+cy+"px,60px,"+(cy+60)+"px,0px)";
+            obj.style.top = y + "px";
+            cy += 10;
+            y -= 10;
+            if(cy >= 60*10){
+                cy = 0;
+                y = 50;
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="開始" onClick="startInterval()" style="position:absolute;left:50px;top:20px" />
+    <input type="button" value="停止" onClick="stop()" style="position:absolute;left:90px;top:20px" />
+    <img id="myimg" src="number.gif" style="position:absolute;left:50px;top:50px;clip:rect(0px,60px,60px,0px)" />
+</body>
+</html>
