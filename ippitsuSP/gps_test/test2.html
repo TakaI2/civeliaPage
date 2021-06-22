@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+    function test(){
+        if ("Notification" in window) {
+            var permission = Notification.permission;
+        
+            if (permission === "denied" || permission === "granted") {
+              return;
+            }
+        
+            Notification.requestPermission();
+        }    
+        if (permission === "denied" || permission === "granted") {
+        return;
+        }
+
+        Notification
+        .requestPermission()
+        .then(function() {
+            var notification = new Notification("Hello, world!");
+        });
+    }
+    </script>
+</head>
+<body>
+    <button onClick="test()">テスト</button>
+</body>
+</html>

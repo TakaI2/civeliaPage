@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var mermaids = [
+    // {
+    //     "name": "1_ElmnoMori",
+    //     "lat":43.071049,
+    //     "lng":141.347466,
+    //     "img":"CP.png",
+    //     "sound":"Check.mp3"
+    // }
+    ];                                  // ★人魚の情報を入れる変数
+
+        function music_play(){
+            var music = new Audio("Check.mp3");
+            music.play();
+        }
+        function loadMermaids() {
+            $.getJSON("mermaids2.json", (data) => {
+                mermaids = JSON.parse(data);
+            // JSONデータを受信した後に実行する処理
+            });
+            // var req = new XMLHttpRequest();                 // サーバのファイルを読む XMLHttpRequest
+            // req.addEventListener("readystatechange", () => {        // 準備状態に変化があった時の処理
+            //     if(req.readyState === 4 && req.status === 200) {    // データ受信が正常に完了したら
+            //         mermaids = JSON.parse(req.responseText);        // 読み込んだJSONデータを整形して人魚データに入れる
+            //     }
+            // });
+            // req.open("GET", "mermaids.json");               // リクエストを設定
+            // req.send();                                     // リクエストを送る
+        }
+        function display(){
+            // var music = new Audio(mermaids[0].sound);
+            // music.play();
+            var obj = document.getElementById("disp");
+            // obj.src = mermaids[0].img;
+            obj.innerHTML = mermaids;
+        }
+    </script>
+</head>
+<body onLoad="loadMermaids()">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <button onClick="music_play()">再生</button>
+        <button onClick="display()">表示</button>
+        <!-- <img id="disp" src="" /> -->
+        <div id="disp"></div>
+</body>
+</html>

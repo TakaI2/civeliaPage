@@ -1,0 +1,86 @@
+﻿[
+    {
+        "name": "1_ElmnoMori",
+        "lat":43.071049,
+        "lng":141.347466,
+        "img":"CP.png"
+    },
+    {
+        "name": "2_Elm",
+        "lat":43.071211,
+        "lng":141.347070,
+        "img":"CP.png"
+    },
+    {
+        "name": "3_Urai",
+        "lat":43.072247,
+        "lng":141.345256,
+        "img":"CP.png"
+    },
+    {
+        "name": "4_hurukawa",
+        "lat":43.071165,
+        "lng":141.343563,
+        "img":"CP.png"
+    },
+    {
+        "name": "5_Clark",
+        "lat":43.070670,
+        "lng":141.343381,
+        "img":"CP.png"
+    },
+    {
+        "name": "6_OldBuilding",
+        "lat":43.070854,
+        "lng":141.342474,
+        "img":"CP.png"
+    },
+    {
+        "name": "7_Musium",
+        "lat":43.072691,
+        "lng":141.342391,
+        "img":"CP.png"
+    },
+    {
+        "name": "8_OnoPond",
+        "lat":43.074359,
+        "lng":141.341918,
+        "img":"CP.png"
+    },
+    {
+        "name": "9_SakshkotoniRiv",
+        "lat":43.074226,
+        "lng":141.341126,
+        "img":"CP.png"
+    },
+    {
+        "name": "10_Popla",
+        "lat":43.075222,
+        "lng":141.336632,
+        "img":"CP.png"
+    },
+    {
+        "name": "11_LuinGurden",
+        "lat":43.058824,
+        "lng":141.332275,
+        "img":"CP.png"
+    },
+    {
+        "name": "ModelBurn",
+        "lat":43.081698,
+        "lng":141.339938,
+        "img":"CP.png"
+    },
+    {
+        "name": "Enyu",
+        "lat":43.081212,
+        "lng":141.341672,
+        "img":"CP.png"
+    }
+
+
+
+
+
+
+]
