@@ -89,5 +89,27 @@
         "lng":141.341672,
         "img":"img/CP1.png",
         "sound":"sound/Check1.mp3"
+    },
+    {
+        "name": "kita36_1",
+        "lat":43.104416,
+        "lng":141.344273,
+        "img":"img/CP1.png",
+        "sound":"sound/Check1.mp3"
+    },
+    {
+        "name": "kita36_2",
+        "lat":43.103744,
+        "lng":141.344474,
+        "img":"img/CP2.png",
+        "sound":"sound/Check2.mp3"
+    },
+    {
+        "name": "kita36_3",
+        "lat":43.103700,
+        "lng":141.343605,
+        "img":"img/CP3.png",
+        "sound":"sound/Check3.mp3"
     }
+
 ]
