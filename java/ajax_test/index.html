@@ -85,7 +85,10 @@
         //ファイルの読込
         $.ajax({url: 'data.json', dataType: 'json'})
         .done(function(data){
-            console.log(data);
+            //console.log(data);
+            data.forEach(function(item, index){
+                console.log(item);
+            });
         })
         .fail(function(){
             window.alert('読込みエラー');
