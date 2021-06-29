@@ -8,11 +8,45 @@
     /* Google マップを表示させるためには style 内で width と height の指定が必要 */
     #mapDiv {width: 100%; height: 400px;}
 </style>
+<link rel="stylesheet" type="text/css" href="css.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
  
 <body>
 <div id="mapDiv"></div>                             <!-- 地図を置くdiv要素 -->
-<img id="getImg" src="" hidden>                     <!-- ★捕獲した人魚を表示するimg要素 -->
+<div id="get" hidden>
+    <div id="CloseButton">閉じる</div>
+    <!-- <img id="getImg" src="">                    捕獲した人魚を表示するimg要素 -->
+    <div class="outer-container">
+        <!-- <img src="https://i.ibb.co/7RhfRBZ/Fine-Line-Harry-Styles.jpg" alt="Harry Styles' Fine Line album cover" id="background" /> -->
+        <audio src="https://res.cloudinary.com/cbanlawi/video/upload/v1614140796/HarryStyles-WatermelonSugar_f5471p.mp3" id="track"></audio>
+    </div>
+    
+    <div class="player-container">
+        <audio src="" id="track"></audio>
+        <div class="box">
+            <div class="play-pause">
+                <i class="far fa-play-circle fa-3x" id="play"></i>
+                <i class="far fa-pause-circle fa-3x" id="pause"></i>
+            </div>
+            <div class="track-info">
+                <div id="track-artist">Harry Styles</div>
+                <div id="track-title">Watermelon Sugar</div>
+            </div>
+            <!-- <div class="next-prev">
+                <i class="far fa-arrow-alt-circle-left fa-2x" id="prev-track"></i>
+                <i class="far fa-arrow-alt-circle-right fa-2x" id="next-track"></i>
+            </div> -->
+            <div class="progress-bar">
+                <input type="range" id="progressBar" min="0" max="" value="0" />
+            </div>
+            <div class="track-time">
+                <div id="currentTime"></div>
+                <div id="durationTime"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <canvas id="cap" width="300" height="60"></canvas>  <!-- ★捕獲済人魚を入れるcanvas要素 -->
  
 <script>
@@ -23,7 +57,9 @@ var mark;                                           // Googleマップの Marker
 var mermaids = [];                                  // ★人魚の情報を入れる変数
 var captured = [];                                  // ★人魚を捕獲済みか否かを入れる変数
 loadMermaids();                                     // ★人魚の情報を読み込む
-var getImg = document.getElementById("getImg");     // ★img要素の取得
+var get = document.getElementById("get");
+var CloseButton = document.getElementById("CloseButton");
+// var getImg = document.getElementById("getImg");     // ★img要素の取得
 var canvas = document.getElementById("cap");        // ★捕獲済人魚を入れるcanvas要素の取得
 var context = canvas.getContext("2d");              // ★contextの取得
 context.fillStyle = "rgb(153, 217, 234)";           // ★塗りつぶす色をターコイズにする
@@ -110,12 +146,12 @@ function calcDistance(lat, lng) {
             var music = new Audio(mermaids[i].sound);　　　　　　 // music変数をさくせい
             music.play();                                       // 音を流す            
             captured[i] = true;                                 // 捕獲済にする
-            getImg.src = mermaids[i].img;                       // 捕獲された人魚の画像を設定
-            context.drawImage(getImg, i * 60, 0, 60, 60);       // 捕獲済の枠に人魚の画像を表示
-            getImg.hidden = false;                              // img要素を表示
+            // getImg.src = mermaids[i].img;                       // 捕獲された人魚の画像を設定
+            // context.drawImage(getImg, i * 60, 0, 60, 60);       // 捕獲済の枠に人魚の画像を表示
+            get.hidden = false;                              // img要素を表示
             mapDiv.hidden = true;                               // 地図を非表示
-            getImg.addEventListener("click", () => {            // img要素がクリックされたら
-                getImg.hidden = true;                           // img要素を非表示
+            CloseButton.addEventListener("click", () => {            // img要素がクリックされたら
+                get.hidden = true;                           // img要素を非表示
                 mapDiv.hidden = false;                          // 地図を表示
             });
         }
@@ -132,4 +168,5 @@ function calcDistance(lat, lng) {
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEk6Ez6eaiKK_pTuM_op7D3M3D4fyoO8&callback=initMap&libraries=geometry">
     </script> 
 </body>
+<script type="text/javascript" src="js.js"></script>
 </html>

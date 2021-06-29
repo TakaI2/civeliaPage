@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>シベリア GO</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+ 
+<body>
+<div id="mapDiv"></div>                             <!-- 地図を置くdiv要素 -->
+
+<div id="get" hidden>
+    <i class="far fa-window-close fa-3x" id="closeButton"></i>    
+
+    <div class="outer-container">
+        <img src="https://i.ibb.co/7RhfRBZ/Fine-Line-Harry-Styles.jpg" alt="Harry Styles' Fine Line album cover" id="background" />
+        <audio src="https://res.cloudinary.com/cbanlawi/video/upload/v1614140796/HarryStyles-WatermelonSugar_f5471p.mp3" id="track"></audio>
+      </div>
+      
+      <div class="player-container">
+        <img src="https://i.ibb.co/7RhfRBZ/Fine-Line-Harry-Styles.jpg" alt="Harry Styles' Fine Line album cover" id="thumbnail" />
+      
+        <div class="box">
+          <div class="play-pause">
+            <i class="far fa-play-circle fa-3x" id="play"></i>
+            <i class="far fa-pause-circle fa-3x" id="pause"></i>
+          </div>
+          <div class="track-info">
+            <div id="track-title"></div>
+          </div>
+          <div class="progress-bar">
+            <input type="range" id="progressBar" min="0" max="" value="0" />
+          </div>
+          <div class="track-time">
+            <div id="currentTime"></div>
+            <div id="durationTime"></div>
+          </div>
+        </div>
+      </div>    
+</div>
+</body>
+<!--Googleマップを読み込むための外部スクリプトの読込み-->   
+<!--API_KEYの部分を自身で取得したAPIキーで置き換える-->
+<!--callback=initMapにより、マップの準備ができたらinitMap関数が実行される-->
+<!--距離を求めるライブラリを使うために末尾に[&libraries=geometry]を追加-->
+<script type="text/javascript" src="script.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEk6Ez6eaiKK_pTuM_op7D3M3D4fyoO8&callback=initMap&libraries=geometry">
+</script> 
+</html>

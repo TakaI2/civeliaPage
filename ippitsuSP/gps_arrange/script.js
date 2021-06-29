@@ -1,33 +1,24 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>シベリア GO</title>
-<style>
-    /* Google マップを表示させるためには style 内で width と height の指定が必要 */
-    #mapDiv {width: 100%; height: 400px;}
-</style>
-</head>
- 
-<body>
-<div id="mapDiv"></div>                             <!-- 地図を置くdiv要素 -->
-<img id="getImg" src="" hidden>                     <!-- ★捕獲した人魚を表示するimg要素 -->
-<canvas id="cap" width="300" height="60"></canvas>  <!-- ★捕獲済人魚を入れるcanvas要素 -->
- 
-<script>
 var mapDiv = document.getElementById("mapDiv");     // 地図を置く場所
 var gmap;                                           // Googleマップの Map オブジェクトのための変数
 var mark;                                           // Googleマップの Marker オブジェクトのための変数
+
+// sound関係
+const track = document.getElementById("track");
+const thumbnail = document.getElementById("thumbnail");
+const background = document.getElementById("background");
+const trackArtist = document.getElementById("track-artist");
+const trackTitle = document.getElementById("track-title");
+const progressBar = document.getElementById("progressBar");
+const currentTime = document.getElementById("currentTime");
+const durationTime = document.getElementById("durationTime");
+let play = document.getElementById("play");
+let pause = document.getElementById("pause");
+// ここまでsound関係
 
 var mermaids = [];                                  // ★人魚の情報を入れる変数
 var captured = [];                                  // ★人魚を捕獲済みか否かを入れる変数
 loadMermaids();                                     // ★人魚の情報を読み込む
 var getImg = document.getElementById("getImg");     // ★img要素の取得
-var canvas = document.getElementById("cap");        // ★捕獲済人魚を入れるcanvas要素の取得
-var context = canvas.getContext("2d");              // ★contextの取得
-context.fillStyle = "rgb(153, 217, 234)";           // ★塗りつぶす色をターコイズにする
-context.fillRect(0, 0, 300, 60);                    // ★canvasを塗りつぶす
 
 // GPS センサの値が変化したら何らか実行する geolocation.watchPosition メソッド
 navigator.geolocation.watchPosition( (position) => {
@@ -110,26 +101,74 @@ function calcDistance(lat, lng) {
             var music = new Audio(mermaids[i].sound);　　　　　　 // music変数をさくせい
             music.play();                                       // 音を流す            
             captured[i] = true;                                 // 捕獲済にする
-            getImg.src = mermaids[i].img;                       // 捕獲された人魚の画像を設定
-            context.drawImage(getImg, i * 60, 0, 60, 60);       // 捕獲済の枠に人魚の画像を表示
-            getImg.hidden = false;                              // img要素を表示
+            get.hidden = false;                              // img要素を表示
             mapDiv.hidden = true;                               // 地図を非表示
-            getImg.addEventListener("click", () => {            // img要素がクリックされたら
-                getImg.hidden = true;                           // img要素を非表示
+            initPlayer(mermaids[i]);
+            closeButton.addEventListener("click", () => {            // img要素がクリックされたら
+                track.pause();
+                get.hidden = true;                           // img要素を非表示
                 mapDiv.hidden = false;                          // 地図を表示
             });
         }
     }
 }
 
-</script>
+// --------------ここからsound関係
 
-    <!--Googleマップを読み込むための外部スクリプトの読込み-->   
-    <!--API_KEYの部分を自身で取得したAPIキーで置き換える-->
-    <!--callback=initMapにより、マップの準備ができたらinitMap関数が実行される-->
-    <!--距離を求めるライブラリを使うために末尾に[&libraries=geometry]を追加-->
-    <div id="test"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEk6Ez6eaiKK_pTuM_op7D3M3D4fyoO8&callback=initMap&libraries=geometry">
-    </script> 
-</body>
-</html>
+function initPlayer(mermaid){
+    track.src = mermaid.voice;
+    thumbnail.src = mermaid.img;
+    background.src = mermaid.img;
+    trackTitle.textContent = mermaid.name;
+}
+
+let playing = true;
+
+function pausePlay() {
+  if (playing) {
+    play.style.display = "none";
+    pause.style.display = "block";
+
+    thumbnail.style.transform = "scale(1.25)";
+
+    track.play();
+    playing = false;
+  } else {
+    pause.style.display = "none";
+    play.style.display = "block";
+
+    thumbnail.style.transform = "scale(1)";
+
+    track.pause();
+    playing = true;
+  }
+}
+
+play.addEventListener("click", pausePlay);
+pause.addEventListener("click", pausePlay);
+
+
+function progressValue() {
+  progressBar.max = track.duration;
+  progressBar.value = track.currentTime;
+
+  currentTime.textContent = formatTime(track.currentTime);
+  durationTime.textContent = formatTime(track.duration);
+}
+
+setInterval(progressValue, 500);
+
+function formatTime(sec) {
+  let minutes = Math.floor(sec / 60);
+  let seconds = Math.floor(sec - minutes * 60);
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  return `${minutes}:${seconds}`;
+}
+
+function changeProgressBar() {
+  track.currentTime = progressBar.value;
+}
+
+progressBar.addEventListener("click", changeProgressBar);
