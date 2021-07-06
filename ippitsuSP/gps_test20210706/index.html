@@ -9,20 +9,24 @@
 </head>
  
 <body>
-<div id="mainDiv">
+<div id="StartButtonDiv">
+  <button id="StartButton" onClick="initMap()">開始</button>
+</div>
+<div id="mainDiv" hidden>
     <div id="mapDiv"></div>                             <!-- 地図を置くdiv要素 -->
-    <button id="LoadButton" onClick="ReLoad()">ロード</button>
+    <div id="LoadButtonDiv">
+      <button id="LoadButton" onClick="ReLoad()">ロード</button>
+    </div>
 </div>
 <div id="get" hidden>
     <i class="far fa-window-close fa-3x" id="closeButton"></i>    
-
     <div class="outer-container">
-        <img src="https://i.ibb.co/7RhfRBZ/Fine-Line-Harry-Styles.jpg" alt="Harry Styles' Fine Line album cover" id="background" />
-        <audio src="https://res.cloudinary.com/cbanlawi/video/upload/v1614140796/HarryStyles-WatermelonSugar_f5471p.mp3" id="track"></audio>
+        <img src="" alt="" id="background" />
+        <audio src="" id="track"></audio>
       </div>
       
       <div class="player-container">
-        <img src="https://i.ibb.co/7RhfRBZ/Fine-Line-Harry-Styles.jpg" alt="Harry Styles' Fine Line album cover" id="thumbnail" />
+        <img src="" alt="" id="thumbnail" />
       
         <div class="box">
           <div class="play-pause">
@@ -48,6 +52,6 @@
 <!--callback=initMapにより、マップの準備ができたらinitMap関数が実行される-->
 <!--距離を求めるライブラリを使うために末尾に[&libraries=geometry]を追加-->
 <script type="text/javascript" src="script.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEk6Ez6eaiKK_pTuM_op7D3M3D4fyoO8&callback=initMap&libraries=geometry">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEk6Ez6eaiKK_pTuM_op7D3M3D4fyoO8&callback=&libraries=geometry">
 </script> 
 </html>

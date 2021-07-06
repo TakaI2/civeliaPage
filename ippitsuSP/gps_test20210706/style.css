@@ -183,7 +183,27 @@
     text-shadow: 0 0 15px white;
   }
   
+  #LoadButtonDiv{
+    text-align: center;
+  }
   #LoadButton{
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    padding: 1rem 4rem;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: blue;
+    border-radius: 0.5rem;
+  }
+
+  #StartButtonDiv{
+    text-align: center;
+  }
+  #StartButton{
     font-size: 1.6rem;
     font-weight: 700;
     line-height: 1.5;

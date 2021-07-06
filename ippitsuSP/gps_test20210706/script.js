@@ -20,7 +20,8 @@ var mermaids = [
         "name": "1_ElmnoMori",
         "lat":43.071049,
         "lng":141.347466,
-        "img":"img/CP1.png",
+        "pointer":"img/CP1.png",
+        "img":"img/1.png",
         "sound":"sound/Check1.mp3",
         "voice":"sound/1_elm_forest.mp3"
     },
@@ -28,7 +29,8 @@ var mermaids = [
         "name": "2_Elm",
         "lat":43.071211,
         "lng":141.347070,
-        "img":"img/CP2.png",
+        "pointer":"img/CP2.png",
+        "img":"img/2.png",
         "sound":"sound/Check2.mp3",
         "voice":"sound/2_elm.mp3"
     },
@@ -36,7 +38,8 @@ var mermaids = [
         "name": "3_Urai",
         "lat":43.072247,
         "lng":141.345256,
-        "img":"img/CP3.png",
+        "pointer":"img/CP3.png",
+        "img":"img/3.png",
         "sound":"sound/Check3.mp3",
         "voice":"sound/3_urai.mp3"
     },
@@ -44,7 +47,8 @@ var mermaids = [
         "name": "4_hurukawa",
         "lat":43.071165,
         "lng":141.343563,
-        "img":"img/CP1.png",
+        "pointer":"img/CP1.png",
+        "img":"img/1.png",
         "sound":"sound/Check1.mp3",
         "voice":"sound/4_hurukawa.mp3"
     },
@@ -52,7 +56,8 @@ var mermaids = [
         "name": "5_Clark",
         "lat":43.070670,
         "lng":141.343381,
-        "img":"img/CP2.png",
+        "pointer":"img/CP2.png",
+        "img":"img/2.png",
         "sound":"sound/Check2.mp3",
         "voice":"sound/5_clark.mp3"
     },
@@ -60,7 +65,8 @@ var mermaids = [
         "name": "6_OldBuilding",
         "lat":43.070854,
         "lng":141.342474,
-        "img":"img/CP3.png",
+        "pointer":"img/CP3.png",
+        "img":"img/3.png",
         "sound":"sound/Check3.mp3",
         "voice":"sound/6_oldbuilding.mp3"
     },
@@ -68,7 +74,8 @@ var mermaids = [
         "name": "7_Musium",
         "lat":43.072691,
         "lng":141.342391,
-        "img":"img/CP1.png",
+        "pointer":"img/CP1.png",
+        "img":"img/1.png",
         "sound":"sound/Check1.mp3",
         "voice":"sound/7_musiam.mp3"
     },
@@ -76,7 +83,8 @@ var mermaids = [
         "name": "8_OnoPond",
         "lat":43.074359,
         "lng":141.341918,
-        "img":"img/CP2.png",
+        "pointer":"img/CP2.png",
+        "img":"img/2.png",
         "sound":"sound/Check2.mp3",
         "voice":"sound/8_musiam.mp3"
     },
@@ -84,7 +92,8 @@ var mermaids = [
         "name": "9_SakshkotoniRiv",
         "lat":43.074226,
         "lng":141.341126,
-        "img":"img/CP3.png",
+        "pointer":"img/CP3.png",
+        "img":"img/3.png",
         "sound":"sound/Check3.mp3",
         "voice":"sound/9_sksktnLi.mp3"
     },
@@ -92,7 +101,8 @@ var mermaids = [
         "name": "10_Popla",
         "lat":43.075222,
         "lng":141.336632,
-        "img":"img/CP1.png",
+        "pointer":"img/CP1.png",
+        "img":"img/1.png",
         "sound":"sound/Check1.mp3",
         "voice":"sound/10_popla.mp3"
     },
@@ -100,7 +110,8 @@ var mermaids = [
         "name": "11_LuinGurden",
         "lat":43.058824,
         "lng":141.332275,
-        "img":"img/CP2.png",
+        "pointer":"img/CP2.png",
+        "img":"img/2.png",
         "sound":"sound/Check2.mp3",
         "voice":"sound/11_ruin.mp3"
     },
@@ -108,7 +119,8 @@ var mermaids = [
         "name": "ModelBurn",
         "lat":43.081698,
         "lng":141.339938,
-        "img":"img/CP3.png",
+        "pointer":"img/CP3.png",
+        "img":"img/3.png",
         "sound":"sound/Check3.mp3",
         "voice":"sound/11_ruin.mp3"
     },
@@ -116,14 +128,13 @@ var mermaids = [
         "name": "Enyu",
         "lat":43.081212,
         "lng":141.341672,
-        "img":"img/CP1.png",
+        "pointer":"img/CP1.png",
+        "img":"img/1.png",
         "sound":"sound/Check1.mp3",
         "voice":"sound/11_ruin.mp3"
-    }
-]
-;                                  // ★人魚の情報を入れる変数
+    }    
+];                                  // ★人魚の情報を入れる変数
 var captured = [];                                  // ★人魚を捕獲済みか否かを入れる変数
-// loadMermaids();                                     // ★人魚の情報を読み込む
 var getImg = document.getElementById("getImg");     // ★img要素の取得
 
 // GPS センサの値が変化したら何らか実行する geolocation.watchPosition メソッド
@@ -134,16 +145,20 @@ navigator.geolocation.watchPosition( (position) => {
     showMyPos(lat, lng);                            // showMyPos 関数を実行
     calcDistance(lat, lng);
 });
- 
+
 // 自分の位置を表示する showMyPos 関数
 function showMyPos(lat, lng) {
     var myPos = new google.maps.LatLng(lat, lng);   // Googleマップの LatLng オブジェクトを作成
     gmap.setCenter(myPos);                          // gmap の中心を myPos の位置にする
     mark.setPosition(myPos);                        // mark の位置を myPos にする
 }
- 
+
 // 地図の初期化
 function initMap() {
+    var start = document.getElementById("StartButtonDiv");
+    start.hidden = true;
+    var mainDiv = document.getElementById("mainDiv");
+    mainDiv.hidden = false;
     // 1回だけ現在位置を測定する getCurrentPosition メソッド
     navigator.geolocation.getCurrentPosition( (position) => {
         var lat = position.coords.latitude;         // 緯度を取得
@@ -163,18 +178,7 @@ function initMap() {
         enableHighAccuracy: true                    // 高精度で測定するオプション
     });
 }
- 
-// ★人魚の情報を読み込む loadMermaids 関数
-function loadMermaids() {
-    var req = new XMLHttpRequest();                 // サーバのファイルを読む XMLHttpRequest
-    req.addEventListener("readystatechange", () => {        // 準備状態に変化があった時の処理
-        if(req.readyState === 4 && req.status === 200) {    // データ受信が正常に完了したら
-            mermaids = JSON.parse(req.responseText);        // 読み込んだJSONデータを整形して人魚データに入れる
-        }
-    });
-    req.open("GET", "mermaids.json");               // リクエストを設定
-    req.send();                                     // リクエストを送る
-}
+
  
 // ★人魚を地図上に配置する placeMermaids 関数
 function placeMermaids() {
@@ -182,7 +186,7 @@ function placeMermaids() {
     for(var i = 0; i < mermaids.length; i++) {      // 全ての人魚について
         var pos = new google.maps.LatLng(mermaids[i].lat, mermaids[i].lng); // 人魚の位置を設定
         var img = {                                 // 画像の設定
-            url: mermaids[i].img,                   // 画像ファイル名
+            url: mermaids[i].pointer,                   // 画像ファイル名
             scaledSize: new google.maps.Size(60, 60)    // 画像を縮小表示
         };
         mermaidMark[i] = new google.maps.Marker({   // 人魚のマーカーを作成
@@ -219,10 +223,7 @@ function calcDistance(lat, lng) {
     }
 }
 
-
-
 function ReLoad(){
-    loadMermaids();                                     // ★人魚の情報を読み込む
     placeMermaids();
 }
 
