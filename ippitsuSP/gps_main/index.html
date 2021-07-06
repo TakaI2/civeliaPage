@@ -94,7 +94,7 @@ function placeMermaids() {
             icon: img,                              // アイコンを設定
             title: mermaids[i].name                 // タイトルを設定
         });
-        captured[i] = false;                        // 捕獲済み状態を全てfalseにする
+        captured[i] = false;                        // 捕獲済み状態を全てfalseにする.ツアーの時にはいらんでしょ。
     }
 }
  
@@ -117,6 +117,7 @@ function calcDistance(lat, lng) {
             getImg.addEventListener("click", () => {            // img要素がクリックされたら
                 getImg.hidden = true;                           // img要素を非表示
                 mapDiv.hidden = false;                          // 地図を表示
+                //ここで、説明音声が流れる処理を入れたらいいのでは？
             });
         }
     }
