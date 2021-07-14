@@ -1,0 +1,231 @@
+<!-- 音声再生機能追加版　-->
+
+<!--地図・表示改良版-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>シベリア GO</title>
+<link href="_common/images/favicon.ico" rel="shortcut icon">
+<link rel="stylesheet" type="text/css" href="_common/css/style_ez.css">
+<link href="_common/css/special.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+ 
+<body>
+
+<!-- header追加 -->
+    <header>
+        <div class="container">
+            <div class="title-block">
+                <h1>北大ツアーアプリ</h1>
+                <h2>右のメニューから好きな説明音声を聴けます</h2>
+            </div>
+            <div class="hamburger" id="open_nav">
+                <img src="_common/images/hamburger.png" alt="">
+            </div>
+        </div><!-- /.container -->
+    </header>
+    <main>
+<!-- header追加 -->
+
+<div id="StartButtonDiv">
+  <button id="StartButton" onClick="initMap()">開始</button>
+</div>
+<div id="mainDiv" hidden>
+    <div id="mapDiv"></div>                             <!-- 地図を置くdiv要素 -->
+    <div id="LoadButtonDiv">
+      <button id="LoadButton" onClick="ReLoad()">ロード</button>
+    </div>
+</div>
+
+<!-- チェックポイントに達したら現れる音声プレーヤー -->
+
+<div id="get" hidden>
+    <i class="far fa-window-close fa-3x" id="closeButton"></i>    
+    <div class="outer-container">
+        <img src="" alt="" id="background" />
+        <audio src="" id="track"></audio>
+      </div>
+      
+      <div class="player-container">
+        <img src="" alt="" id="thumbnail" />
+      
+        <div class="box">
+          <div class="play-pause">
+            <i class="far fa-play-circle fa-3x" id="play"></i>
+            <i class="far fa-pause-circle fa-3x" id="pause"></i>
+          </div>
+          <div class="track-info">
+            <div id="track-title"></div>
+          </div>
+          <div class="progress-bar">
+            <input type="range" id="progressBar" min="0" max="" value="0" />
+          </div>
+          <div class="track-time">
+            <div id="currentTime"></div>
+            <div id="durationTime"></div>
+          </div>
+        </div>
+      </div>    
+</div>
+
+<!--K編集領域-->  
+
+
+<div class="audio">
+	<details>
+
+
+ 
+		    <summary>音声はこちらをクリック</summary>
+
+
+<!--音声ファイル1-->
+		<figure>
+		    <figcaption>1_elm_forest</figcaption>
+		    <audio
+		        controls
+		        src="sound/1_elm_forest.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+
+<!--音声ファイル2-->
+		<figure>
+		    <figcaption>2_elm</figcaption>
+		    <audio
+		        controls
+		        src="sound/2_elm.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+
+<!--音声ファイル3-->
+		<figure>
+		    <figcaption>3_urai</figcaption>
+		    <audio
+		        controls
+		        src="sound/3_urai.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル4-->
+		<figure>
+		    <figcaption>4_hurukawa</figcaption>
+		    <audio
+		        controls
+		        src="sound/4_hurukawa.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル5-->
+		<figure>
+		    <figcaption>5_clark</figcaption>
+		    <audio
+		        controls
+		        src="sound/5_clark.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル6-->
+		<figure>
+		    <figcaption>6_oldbuilding</figcaption>
+		    <audio
+		        controls
+		        src="sound/6_oldbuilding.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル7-->
+		<figure>
+		    <figcaption>7_musiam</figcaption>
+		    <audio
+		        controls
+		        src="sound/7_musiam.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル8-->
+		<figure>
+		    <figcaption>8_musiam</figcaption>
+		    <audio
+		        controls
+		        src="sound/8_musiam.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル9-->
+		<figure>
+		    <figcaption>9_sksktnLi</figcaption>
+		    <audio
+		        controls
+		        src="sound/9_sksktnLi.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル10-->
+		<figure>
+		    <figcaption>10_popla</figcaption>
+		    <audio
+		        controls
+		        src="sound/10_popla.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル11-->
+		<figure>
+		    <figcaption>11_ruin</figcaption>
+		    <audio
+		        controls
+		        src="sound/11_ruin.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル12-->
+		<figure>
+		    <figcaption>12_modelbarn</figcaption>
+		    <audio
+		        controls
+		        src="sound/12_modelbarn.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+<!--音声ファイル13-->
+		<figure>
+		    <figcaption>13_enyu</figcaption>
+		    <audio
+		        controls
+		        src="sound/13_enyu.mp3">
+		            Your browser does not support the
+		            <code>audio</code> element.
+		    </audio>
+		</figure>
+
+
+	</details>
+</div>
+<!--K編集領域ここまで-->
+
+</body>
+<!--Googleマップを読み込むための外部スクリプトの読込み-->   
+<!--API_KEYの部分を自身で取得したAPIキーで置き換える-->
+<!--callback=initMapにより、マップの準備ができたらinitMap関数が実行される-->
+<!--距離を求めるライブラリを使うために末尾に[&libraries=geometry]を追加-->
+<script type="text/javascript" src="js/script.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEk6Ez6eaiKK_pTuM_op7D3M3D4fyoO8&callback=&libraries=geometry">
+</script> 
+</html>
