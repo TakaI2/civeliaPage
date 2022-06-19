@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8" />
+
+  <!-- A-Frame ライブラリの読み込み -->
+  <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+
+  <!-- AR.js ライブラリの読み込み -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+  <style>
+  	*{padding: 0; margin: 0; }
+	canvas{background: #eee ;display: block; margin: 0 auto;}
+  </style>
+
+</head>
+
+<style>
+	.arjs-loader{
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.8);
+		z-index: 9999;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.arjs-loader div{
+		text-align: center;
+		font-size: 1.25em;
+		color: white;
+	}
+
+</style>
+
+<body style='margin: 0; overflow: hidden;'>
+
+  <div class="arjs-loader">
+	
+	<canvas id="myCanvas" width="480" height="320"></canvas>
+
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContent("2d");
+
+		ctx.beginPath();
+		ctx.rect(20, 40, 50, 50);
+		ctx.fillStyle = "#FF0000";
+		ctx.fill();
+		ctx.closePath();
+
+		ctx.beginPath();
+		ctx.arc(240, 160, 20, 0, Math.PI*2, false);
+		ctx.fillStyle = "green";
+		ctx.fill();
+		ctx.closePath();
+
+		ctx.beginPath();
+		ctx.rect(160, 10, 100, 40);
+		ctx.strokeStyle = "rgba(0, 0, 255, 0.5)";
+		ctx.stroke();
+		ctx.closePath();
+
+	</script>
+  </div>
+
+  <script>
+	AFRAME.registerComponent('alpha-test', {
+	  dependencies: ['material'],
+	  init: function () {
+		this.el.getObject3D('mesh').material.alphaTest = 0.5;
+	  }
+	});
+  </script>
+
+  <!-- シーンを追加 -->
+  <!-- <a-scene embedded arjs="debugUIEnabled:false;"> -->
+  <a-scene vr-mode-ui="enabled: false;"renderer="logarithmicDepthBuffer: true;" 
+  embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+
+	<a-assets>
+		<img id="floor1" src="floor1.png">
+		<img id="floor2" src="floor2.png">
+		<img id="floor3" src="floor3.png">
+		<img id="floor4" src="floor4.png">
+		<img id="floor5" src="floor5.png">
+
+	</a-assets>
+
+<!-- もし、このタグを複数作れば、異なる画像マーカごとに別のARを表示できるのでは？ -->
+  <a-nft
+      type="nft"
+      url="https://fervent-easley-0190fe.netlify.app/three/ar_demo4/mark/act"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+  >
+
+  <!-- 回転アニメーション
+	<a-entity
+	  gltf-model="model_obj/teseusu_glb/teseusu_glt2.glb"
+	  scale="170 170 170"
+	  position="180 1 10"
+	  rotation = "-90 180 180"
+
+
+	  >
+	</a-entity>
+  -->
+
+
+	<!-- 1層目に表示する絵 -->
+	<a-entity scale="2 2 2"
+			position= "100 0.5 -200"
+			
+			animation="property: rotation;
+			from: 0 0 0;
+			to: 0 -360 0;
+			dur: 10000;
+			loop: true;
+			easing: linear">
+	
+
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
+		-->
+
+		<!--Textured plane parallel to ground -->
+		<a-image src="#floor1" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+		
+	</a-entity>
+
+	
+  	<!-- 2層目に表示する絵 -->
+	<a-entity scale="3 3 3"
+			  position= "100 3 -200"
+			  
+			  animation="property: rotation;
+			  from: 0 0 0;
+			  to: 0 360 0;
+			  dur: 9500;
+			  loop: true;
+			  easing: linear">
+			 
+			  
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
+		-->
+		
+		<!--Textured plane parallel to ground -->
+		<a-image src="#floor2" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+	
+
+
+	</a-entity>
+
+	<!-- 3層目に表示する絵 -->
+	<a-entity scale="4 4 4"
+			position= "100 6 -200"
+		
+			animation="property: rotation;
+			from: 0 0 0;
+			to: 0 -360 0;
+			dur: 8000;
+			loop: true;
+			easing: linear">
+		
+		
+	<!--Basic Plane. 
+	<a-plane color="#CCC" height="20" width="20"></a-plane>
+	-->
+	
+	<!--Textured plane parallel to ground -->
+	<a-image src="#floor3" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+
+
+
+	</a-entity>
+
+	<!-- 4層目に表示する絵 -->
+	<a-entity scale="5 5 5"
+			position= "100 10 -200"
+			
+				animation="property: rotation;
+				from: 0 0 0;
+				to: 0 360 0;
+				dur: 7500;
+				loop: true;
+				easing: linear">
+			
+			
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
+		-->
+		
+		<!--Textured plane parallel to ground -->
+		<a-image src="#floor4" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+	</a-entity>
+	
+
+	<!-- 5層目に表示する絵 -->
+	<a-entity scale="6 6 6"
+			position= "100 16 -200"
+		
+			animation="property: rotation;
+			from: 0 0 0;
+			to: 0 -360 0;
+			dur: 7000;
+			loop: true;
+			easing: linear">
+		
+		
+		<!--Basic Plane. 
+		<a-plane color="#CCC" height="20" width="20"></a-plane>
+		-->
+		
+		<!--Textured plane parallel to ground -->
+		<a-image src="#floor5" width="100" height="100" position="0 0 0" rotation="-90 0 0"  transparent="true" alpha-test="0.5"></a-image>
+	</a-entity>
+
+  </a-nft>
+
+
+  <!-- カメラを追加 -->
+  <a-entity camera></a-entity>
+  </a-scene>
+
+
+</body>
+
+
+
+</html>
